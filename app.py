@@ -129,14 +129,67 @@ def chhalaang_rev(request):
     db.session.add(rev)
     db.session.commit()
 
+#login form----------------------------------->
+
 @app.route('/login', methods=['GET'])
 def login():
-
     return render_template("login.html")
 
-@app.route('/signup')
+#signup form-------------------------------->
+
+class register(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(30), unique=True, nullable=False)
+    password = db.Column(db.String(20), nullable=False)
+
+message_list = {}
+
+@app.route('/signup', methods=['GET','POST'])
 def signup():
-    return render_template("signup.html")
+    if request.method == 'POST':
+        message_list = {}
+        count = 0
+        test_str = ''
+        usrname = request.form['name']
+        if usrname == test_str or usrname.strip() == test_str:
+            message_list["no_usr"] = "Please enter a username"
+            count += 1
+        if register.query.filter_by(username=usrname).first():
+            message_list["usr_exits"] = "This username already exists"
+            count += 1
+        if len(usrname) > 20:
+            message_list["long_name"] = "Max 20 characters"
+            count += 1
+
+        email = request.form['email']
+        if email == test_str or email.strip() == test_str:
+            message_list["no_email"] = "Please enter an email"
+            count += 1
+        if register.query.filter_by(email=email).first():
+            message_list["email_exits"] = "This email is  already registered"
+            count += 1
+        if len(email) > 30:
+            message_list["long_email"] = "Max 30 characters"
+            count += 1
+        password = request.form['password']
+        if ('' and password.strip()):
+            message_list["no_pass"] = "Please add a password"
+            count += 1
+        if len(password) > 20:
+            message_list["long_pass"] = "Max 20 characters"
+            count += 1
+        if count == 0:
+            usr = register(username=usrname, email=email, password=password)
+            db.session.add(usr)
+            db.session.commit()
+            message_list["success"] ="Registration Successful! Continue to "
+        else: 
+            message_list["fail"] = "User didn't register"
+
+        return render_template("signup.html", message_list=message_list)
+        
+    return render_template("signup.html", message_list={})
 
 def truncate(number) -> float:
     stepper = 10
