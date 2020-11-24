@@ -130,7 +130,7 @@ def chhalaang_rev(request):
     db.session.commit()
 
 @app.route('/login', methods=['GET'])
-def login()
+def login():
 
     return render_template("login.html")
 
