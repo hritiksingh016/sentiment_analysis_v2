@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import pickle
-from flask import Flask, jsonify, render_template, request,redirect 
+from flask import Flask, jsonify, render_template, request,redirect,url_for
 from flask_ngrok import run_with_ngrok
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
@@ -131,9 +131,151 @@ def chhalaang_rev(request):
 
 #login form----------------------------------->
 
-@app.route('/login', methods=['GET'])
+
+@app.route('/login', methods=['GET','POST'])
 def login():
-    return render_template("login.html")
+    if request.method == 'POST':
+        if request.form['name']=='' and request.form['email']=='':
+            return render_template("login.html",message='Please enter a username or email')
+        if request.form['password'] == '':
+            return render_template("login.html",message='Please enter your password')
+        if request.form['name'] != '':
+            user_name = register.query.filter_by(username=request.form['name']).first()
+            if user_name:
+                if request.form['password'] == user_name.password:
+                    avg_sd = 0
+                    avg_ch = 0
+                    avg_hp = 0
+                    avg_av = 0
+                    avg_lx = 0
+                    sdf = shakuntala.query.all()
+                    count = 0
+                    for q in sdf:
+                        avg_sd += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_sd /= count
+                        avg_sd *= 10
+
+                    sdf2 = chhalaang.query.all()
+                    count = 0
+                    for q in sdf:
+                        avg_ch += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_ch /= count
+                        avg_ch *= 10
+
+                    sdf3 = avengers.query.all()
+                    count = 0
+                    for q in sdf3:
+                        avg_av += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_av /= count
+                        avg_av *= 10
+
+                    sdf4 = harry.query.all()
+                    count = 0
+                    for q in sdf4:
+                        avg_hp += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_hp /= count
+                        avg_hp *= 10
+
+                    sdf5 = laxmii.query.all()
+                    count = 0
+                    for q in sdf5:
+                        avg_lx += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_lx /= count
+                        avg_lx *= 10
+                    
+                    avg_sd = truncate(avg_sd)
+                    avg_ch = truncate(avg_ch)
+                    avg_av = truncate(avg_av)
+                    avg_hp = truncate(avg_hp)
+                    avg_lx = truncate(avg_lx)
+
+                    avg_sd_int = int(avg_sd)
+                    avg_ch_int = int(avg_ch)
+                    avg_av_int = int(avg_av)
+                    avg_hp_int = int(avg_hp)
+                    avg_lx_int = int(avg_lx)
+                    return render_template('home.html', revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+        
+        if request.form['email'] != '':
+            user_email = register.query.filter_by(email=request.form['email']).first()
+            if user_email:
+                if request.form['password'] == user_email.password:
+                    avg_sd = 0
+                    avg_ch = 0
+                    avg_hp = 0
+                    avg_av = 0
+                    avg_lx = 0
+                    sdf = shakuntala.query.all()
+                    count = 0
+                    for q in sdf:
+                        avg_sd += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_sd /= count
+                        avg_sd *= 10
+
+                    sdf2 = chhalaang.query.all()
+                    count = 0
+                    for q in sdf:
+                        avg_ch += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_ch /= count
+                        avg_ch *= 10
+
+                    sdf3 = avengers.query.all()
+                    count = 0
+                    for q in sdf3:
+                        avg_av += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_av /= count
+                        avg_av *= 10
+
+                    sdf4 = harry.query.all()
+                    count = 0
+                    for q in sdf4:
+                        avg_hp += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_hp /= count
+                        avg_hp *= 10
+
+                    sdf5 = laxmii.query.all()
+                    count = 0
+                    for q in sdf5:
+                        avg_lx += q.percent
+                        count += 1
+                    if count != 0:
+                        avg_lx /= count
+                        avg_lx *= 10
+                    
+                    avg_sd = truncate(avg_sd)
+                    avg_ch = truncate(avg_ch)
+                    avg_av = truncate(avg_av)
+                    avg_hp = truncate(avg_hp)
+                    avg_lx = truncate(avg_lx)
+
+                    avg_sd_int = int(avg_sd)
+                    avg_ch_int = int(avg_ch)
+                    avg_av_int = int(avg_av)
+                    avg_hp_int = int(avg_hp)
+                    avg_lx_int = int(avg_lx)
+                    return render_template('home.html', revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+                else:
+                    return render_template("login.html", message='Inavlid login!')
+        
+    return render_template("login.html", message='')
 
 #signup form-------------------------------->
 
@@ -183,7 +325,7 @@ def signup():
             usr = register(username=usrname, email=email, password=password)
             db.session.add(usr)
             db.session.commit()
-            message_list["success"] ="Registration Successful! Continue to "
+            message_list["success"] ="Registration Successful!"
         else: 
             message_list["fail"] = "User didn't register"
 

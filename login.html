@@ -1,101 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{{ url_for('static',filename='login//icons/favicon.ico')}}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='login/vendor/bootstrap/css/bootstrap.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='login/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='login/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='login/vendor/css-hamburgers/hamburgers.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='login/vendor/select2/select2.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='login/css/util.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='login/css/main.css')}}">
-<!--===============================================================================================-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='signup/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='signup/css/style.css')}}">
+    <style>
+        .alert {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #f44336;
+  color: white;
+  opacity: 0.5;
+  transition: opacity 0.6s;
+  margin-bottom: 12px;
+  -webkit-box-shadow: -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+  -moz-box-shadow:    -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+  box-shadow:         -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+}
+
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+    </style>
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{{ url_for('static',filename='login/images/movie2.jpg')}}" alt="IMG">
-				</div>
 
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						Member Login
-					</span>
+    <div class="main">
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form">
+                    <h2>Sign in </h2>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/>
 					</div>
+					<div class="form-group" style="align-items: center;">OR</div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" id="email" placeholder="Email"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
+                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit submit" value="Sign in"/>
+                        <a href="/signup" class="submit-link submit" id="myDiv">Create Account</a>
+                    </div>
+                    <div style="overflow-y: auto; height:100px;">
+						{% if message != '' %}
+						<div class="alert">
+							<span class="closebtn">&times;</span>
+							{{message}}
+						</div>
+						{% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
+    </div>
 
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="/signup">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-	
-
-	
-<!--===============================================================================================-->	
-	<script src="{{ url_for('static',filename='login/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='login/vendor/bootstrap/js/popper.js')}}"></script>
-	<script src="{{ url_for('static',filename='login/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='login/vendor/select2/select2.min.js')}}"></script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='login/vendor/tilt/tilt.jquery.min.js')}}"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="{{ url_for('static',filename='login/js/main.js')}}"></script>
-
-</body>
+    <!-- JS -->
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+        
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+        </script>
+    <script src="{{ url_for('static',filename='signup/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='signup/js/main.js')}}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
