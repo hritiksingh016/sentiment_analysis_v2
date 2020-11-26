@@ -272,8 +272,8 @@ def login():
                     avg_hp_int = int(avg_hp)
                     avg_lx_int = int(avg_lx)
                     return render_template('home.html', revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
-                else:
-                    return render_template("login.html", message='Inavlid login!')
+        else:
+            return render_template("login.html", message='Incorrect Password!')
         
     return render_template("login.html", message='')
 
