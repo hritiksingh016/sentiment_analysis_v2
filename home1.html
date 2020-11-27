@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7 no-js" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 no-js" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en" class="no-js">
+
+<!-- moviesingle07:38-->
+<head>
+    <!-- Basic need -->
+    <title>BlockBuster Review</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+    <!-- Mobile specific meta -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone-no">
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <style>
+
+   input[type=text] {
+  width: 50%;
+  -webkit-transition: width .35s ease-in-out;
+  transition: width .35s ease-in-out;
+}
+input[type=text]:hover {
+  width: 85%;
+}
+input[type=text]:focus {
+  width: 85%;
+}
+   .myButton {
+	box-shadow: -1px 15px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#24a0ed;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 50px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.example::-webkit-scrollbar {
+  display: none;
+}
+.BUTTON_LRA {
+   background: #F63D3D;
+   background-image: -webkit-linear-gradient(top, #F63D3D, #D01E1E);
+   background-image: -moz-linear-gradient(top, #F63D3D, #D01E1E);
+   background-image: -ms-linear-gradient(top, #F63D3D, #D01E1E);
+   background-image: -o-linear-gradient(top, #F63D3D, #D01E1E);
+   background-image: -webkit-gradient(to bottom, #F63D3D, #D01E1E);
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 10px;
+   color: #FFFFFF;
+   font-family: Open Sans;
+   font-size: 25px;
+   font-weight: bold;
+   padding: 10px;
+   -webkit-box-shadow: 1px 0 8px 0 #000000;
+   -moz-box-shadow: 1px 0 8px 0 #000000;
+   box-shadow: 1px 0 8px 0 #000000;
+   text-shadow: 1px 1px 20px #000000;
+   border: solid #EF1313 1px;
+   text-decoration: none;
+   cursor: pointer;
+   text-align: center;
+}
+
+.BUTTON_LRA:hover {
+   border: solid #F90C0C 1px;
+   background: #F1131E;
+   background-image: -webkit-linear-gradient(top, #F1131E, #DD0101);
+   background-image: -moz-linear-gradient(top, #F1131E, #DD0101);
+   background-image: -ms-linear-gradient(top, #F1131E, #DD0101);
+   background-image: -o-linear-gradient(top, #F1131E, #DD0101);
+   background-image: -webkit-gradient(to bottom, #F1131E, #DD0101);
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   text-decoration: none;
+}
+    </style>
+  
+</head>
+<body>
+<!--preloading-->
+<div id="preloader">
+    <img class="logo" src="{{ url_for('static', filename='images/logo1.png')}}" alt="" width="119" height="58">
+    <div id="status">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!--end of preloading-->
+<header class="ht-header">
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header logo">
+				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    <span class="sr-only">Toggle navigation</span>
+					    <div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				    </div>
+			    </div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-right">               
+						<li style="margin-right:4px" ><button class="BUTTON_LRA" ><a href="/login">LOG In</a></button></li>
+						<li style="margin-left:4px" ><button class="BUTTON_LRA"><a href="/signup">sign up</a></button></li>
+					</ul>
+				</div>
+			<!-- /.navbar-collapse -->
+	    </nav>
+	</div>
+</header>
+<div>
+    <div class="slider movie-items">
+        <div class="container">
+            <div class="row">
+                <div class="social-link">       
+                    <p>Follow us: </p>
+                    <a href="https://www.instagram.com/reel2reeal/?hl=en"><i class="ion-social-instagram"></i></a>
+                </div>
+                <div  class="slick-multiItemSlider">
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ url_for('static', filename='poster/avengers.jpg')}}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="blue"><a href="#">Sci-fi</a></span> <span class="yell"><a href="#">action</a></span>
+                            </div>
+                            <h6><a href="#">Avengers:Endgame</a></h6>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_av == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_av }}</span> /10</p>
+                                {% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ url_for('static', filename='poster/hp7.jpg')}}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="red"><a href="#">Fantasy</a></span> <span class="orange"><a href="#">Adventure</a></span>
+                            </div>
+                            <h6><a href="#">Harry Potter and the Deathly Hallows</a></h6>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_hp == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_hp }}</span> /10</p>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ url_for('static', filename='poster/ch.jpg')}}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="green"><a href="#">Comedy</a></span> <span class="red"><a href="#">Drama</a></span>
+                            </div>
+                            <h6><a href="#">Chhalaang</a></h6>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_ch == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_ch }}</span> /10</p>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ url_for('static', filename='poster/sd.jpg')}}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="blue"><a href="#">Biopic</a></span> 
+                            </div>
+                            <h6><a href="#">Shakuntala Devi</a></h6>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_sd == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_sd }}</span> /10</p>
+                                {% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ url_for('static', filename='poster/laxmii.jpg')}}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="orange"><a href="#">Adventure</a></span> <span class="red"><a href="#">Horror</a></span>
+                            </div>
+                            <h6><a href="#">Laxmii</a></h6>
+                            <p><i class="ion-android-star"></i>
+                                
+                                {% if avg_lx == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_lx }}</span> /10</p>
+                                {% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <a href="#"><img src="{{ url_for('static', filename='poster/batman.webp')}}" alt="" width="285" height="437"></a>
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="yell"><a href="#">action</a></span>
+                            </div>
+                            <h6><a href="#">The Batman</a></h6>
+                            <p><i class="ion-android-star"></i>
+                                <p><span id="js-sd">N/A</span></p></p>
+                        </div>
+                    </div>
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <img src="{{ url_for('static', filename='poster/bw.jpg')}}" alt="" width="285" height="437">
+                        </div>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="blue"><a href="#">Sci-Fi</a></span>
+                            </div>
+                            <h6><a href="#">Black Widow</a></h6>
+                            <p><i class="ion-android-star"></i>
+                                <p><span id="js-sd">N/A</span></p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="movie-items">
+        <div class="container">
+            <div class="row ipad-width">
+                <div class="col-md-8">
+                    <div class="title-hd">
+                        <h2>in theater</h2>
+                    </div>
+                    <div class="tabs">
+                        <ul class="tab-links">
+                            <li class="active"><a href="#tab1">#Now Showing</a></li>
+                            <li><a href="#tab2"> #Coming soon</a></li>
+                                                  
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab1" class="tab active">
+                                <div class="row">
+                                    <div class="slick-multiItem">
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ url_for('static', filename='poster/avengers.jpg')}}" alt="" width="185" height="284">
+                                                </div> 
+                                                <div class="hvr-inner">
+                                                    <a  href="#avengers"> Review <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">Avengers:Endgame</a></h6>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_av == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_av }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ url_for('static', filename='poster/hp7.jpg')}}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#harrypotter"> Review <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">Harry Potter and the Deathly Hallows</a></h6>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_hp == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_hp }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ url_for('static', filename='poster/ch.jpg')}}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#chhalaang"> Review <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">Chhalaang</a></h6>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_ch == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_ch }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ url_for('static', filename='poster/sd.jpg')}}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#shakuntala"> Review <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">Shakuntala Devi</a></h6>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_sd == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_sd }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ url_for('static', filename='poster/laxmii.jpg')}}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#laxmi"> Review <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">Laxmii</a></h6>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_lx == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_lx }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>	
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab2" class="tab">
+                               <div class="row">
+                                    <div class="slick-multiItem">
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ url_for('static', filename='poster/bw.jpg')}}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#bw"> Review <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">Black Widow</a></h6>
+                                                    <p><i class="ion-android-star"></i><p><span id="js-sd">N/A</span></p></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ url_for('static', filename='poster/batman.webp')}}" alt="" width="185" height="284">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#batman"> Review <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">The Batman</a></h6>
+                                                    <p><i class="ion-android-star"></i><p><span id="js-sd">N/A</span></p></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="page-single movie-single movie_single">
+    <div class="container example" id="shakuntala" style="height:14.28%; overflow-y:scroll;">
+        <div class="row ipad-width2">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="movie-img sticky-sb">
+                    <img src="{{ url_for('static', filename='poster/sd.jpg')}}" alt="">
+                    <div class="movie-btn"> 
+                        <div class="btn-transform transform-vertical red">
+                            <div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+                            <div><a href="https://www.youtube.com/embed/8HA1HRufYso" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="movie-single-ct main-content">
+                    <h1 class="bd-hd">Shakuntala Devi<span>2020</span></h1>
+                    <div class="movie-rate">
+                        <div class="rate">
+                            <i class="ion-android-star"></i>
+                            {% if avg_sd == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_sd }}</span> /10<br>
+                                </p>
+                            {% endif %}
+                        </div>
+                        {% if avg_sd != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_sd_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_sd - avg_sd_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="movie-tabs">
+                        <div class="tabs">
+                            <ul class="tab-links tabs-mv">
+                                <li class="active"><a href="#overview">Overview</a></li>
+                                <li><a href="#reviews"> Reviews</a></li>                        
+                            </ul>
+                            <div class="tab-content">
+                                <div id="overview" class="tab active">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-12 col-xs-12">
+                                            <h2 style="color: white;">Shakuntala Devi, a mathematician's journey to become 'The Human Computer' and her relationship with her daughter.</h2>
+                                        </div>
+                                        <div class="col-md-4 col-xs-12 col-sm-12">
+                                            <div class="sb-it">
+                                                <h6>Director: </h6>
+                                                <p><a href="#">Anu Menon</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Writer: </h6>
+                                                <p><a href="#">Ishita Moitra,</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Stars: </h6>
+                                                <p><a href="#">Vidya Balan,</a> <a href="#"> Jisshu Sengupta,</a> <a href="#"> Sanya Malhotra,</a><a href="#"> Amit Sadh</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Run Time:</h6>
+                                                <p>127 min</p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>MMPA Rating:</h6>
+                                                <p>U\A</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="reviews" class="tab review">
+                                   <div class="row">
+                                        <div class="rv-hd">
+                                            <div class="div1">
+                                                <h3>Related Movies To</h3>
+                                                <h2>Shakuntala Devi</h2>
+                                            </div>
+                                            <a class="redbtn" href="/login">Write Review</a>
+                                        </div>
+                                        <div style="color: white;">
+                                            Please <button class="BUTTON_LRA" ><a href="/login">LOG In</a></button> to enter a review.
+                                        </div>
+                                        <!-- please login to review -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Chhalaang -->
+    <div class="container example" id="chhalaang" style="height:14.28%; overflow-y:scroll;">
+		<div class="row ipad-width2">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="movie-img sticky-sb">
+					<img src="{{ url_for('static', filename='poster/ch.jpg')}}" alt="">
+					<div class="movie-btn">	
+						<div class="btn-transform transform-vertical red">
+							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+							<div><a href="https://www.youtube.com/embed/BY-0SbSF2dE" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct main-content">
+					<h1 class="bd-hd">Chhalaang	<span>2020</span></h1>
+					<div class="movie-rate">
+						<div class="rate">
+							<i class="ion-android-star"></i>
+							<p><span>{{ avg_ch }}</span> /10<br>
+							</p>
+						</div>
+						<div class="rate-star">
+							<p>Movie Rating:  </p>
+							{% for x in range(0,avg_ch_int) %}
+                                <i class="ion-ios-star"></i>
+                            {% endfor %}
+                            {% if (avg_ch - avg_ch_int) >= 0.5 %}
+                                <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                            {% endif %}
+						</div>
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overview1">Overview</a></li>
+								<li><a href="#reviews1"> Reviews</a></li>                        
+							</ul>
+						    <div class="tab-content">
+						        <div id="overview1" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<h2 style="color: white;">Mahender Singh Hooda, aka Montu, lives with his father, Kamlesh Singh Hooda, His Mother and his younger brother. He is a happy go lucky small PTI teacher inadvertently attracted to the new computer teacher, Neelima "Neelu" Mehra. He faces competition from a new senior PT teacher, Inder Mohan Singh, who excels where Montu performs weakly. However, when Montu and Inder have an argument, they decide to settle their dispute by pitting their teams against one another. But, Montu's Younger brother Monty is in Singh's Team. In the end, Montu's Team wins, and Singh and Montu agree to work side by side and Neelima approves the relationship between Montu and Her.</h2>
+						            	</div>
+						            	<div class="col-md-4 col-xs-12 col-sm-12">
+						            		<div class="sb-it">
+						            			<h6>Director: </h6>
+						            			<p><a href="#">Hansal Mehta</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Writer: </h6>
+						            			<p><a href="#">Luv Ranjan,</a> <a href="#">Aseem Arrora</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Stars: </h6>
+						            			<p><a href="#">Rajkummar Rao,</a> <a href="#">Nushrat Bharucha,</a> <a href="#">Mohammed Zeeshan Ayyub,</a><a href="#">Saurabh Shukla</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Run Time:</h6>
+						            			<p>136 min</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>MMPA Rating:</h6>
+						            			<p>U/A</p>
+											</div>
+						            	</div>
+						            </div>
+						        </div>
+						        <div id="reviews1" class="tab review">
+						           <div class="row">
+						            	<div class="rv-hd">
+						            		<div class="div">
+							            		<h3>Related Movies To</h3>
+						       	 				<h2>Chhalaang</h2>
+							            	</div>
+                                            <a  class="redbtn" href="/login">Write Review</a>
+						            	</div>
+                                            <div style="color: white;">
+                                                Please <button class="BUTTON_LRA" ><a href="/login">LOG In</a></button> to enter a review.
+                                            </div>
+                                            
+                                            <!-- please login to enter review -->
+						            </div>
+						        </div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <!-- avengers -->
+    <div class="container example" id="avengers" style="height:14.28%; overflow-y:scroll;">
+		<div class="row ipad-width2">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="movie-img sticky-sb">
+					<img src="{{ url_for('static', filename='poster/avengers.jpg')}}" alt="">
+					<div class="movie-btn">	
+						<div class="btn-transform transform-vertical red">
+							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+							<div><a href="https://www.youtube.com/embed/hA6hldpSTF8" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct main-content">
+					<h1 class="bd-hd">Avengers:Endgame 	<span>2019</span></h1>
+					<div class="movie-rate">
+						<div class="rate">
+							<i class="ion-android-star"></i>
+							{% if avg_av == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_av }}</span> /10<br>
+                                </p>
+                            {% endif %}
+                        </div>
+                        {% if avg_av != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_av_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_av - avg_av_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overview2">Overview</a></li>
+								<li><a href="#reviews2"> Reviews</a></li>                        
+							</ul>
+						    <div class="tab-content">
+						        <div id="overview2" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<h2 style="color: white;">After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.</h2>
+						            	</div>
+						            	<div class="col-md-4 col-xs-12 col-sm-12">
+						            		<div class="sb-it">
+						            			<h6>Director: </h6>
+						            			<p><a href="#">Joe Russo,</a><a href="#">Anthony Russo</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Writer: </h6>
+						            			<p><a href="#">Christopher Markus,</a> <a href="#">Stephen McFeely</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Stars: </h6>
+						            			<p><a href="#">Robert Downey Jr,</a> <a href="#"> Chris Evans,</a> <a href="#"> Mark Ruffalo,</a><a href="#"> Scarlett Johansson</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Run Time:</h6>
+						            			<p>182 min</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>MMPA Rating:</h6>
+						            			<p>PG-13</p>
+											</div>
+						            	</div>
+						            </div>
+						        </div>
+						        <div id="reviews2" class="tab review">
+						           <div class="row">
+						            	<div class="rv-hd">
+						            		<div class="div">
+							            		<h3>Related Movies To</h3>
+						       	 				<h2>Avengers:Endgame</h2>
+							            	</div>
+                                            <a href="#" class="redbtn" href="/login">Write Review</a>
+                                        </div>
+                                        <div style="color: white;">
+                                            Please <button class="BUTTON_LRA" ><a href="/login">LOG In</a></button> to enter a review.
+                                        </div>
+                                        <!-- please login to enter riview -->
+						            </div>
+						        </div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <!-- harry potter -->
+	<div class="container example" id="harrypotter" style="height:14.28%; overflow-y:scroll;">
+		<div class="row ipad-width2">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="movie-img sticky-sb">
+					<img src="{{ url_for('static', filename='poster/hp7.jpg')}}" alt="">
+					<div class="movie-btn">	
+						<div class="btn-transform transform-vertical red">
+							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+							<div><a href="https://www.youtube.com/embed/MxqsmsA8y5k" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct main-content">
+					<h1 class="bd-hd">Harry Potter and the Deathly Hallows Part 1 <span>2010</span></h1>
+					<div class="movie-rate">
+						<div class="rate">
+							<i class="ion-android-star"></i>
+							{% if avg_hp == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_hp }}</span> /10<br>
+                                </p>
+                            {% endif %}
+                        </div>
+                        {% if avg_hp != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_hp_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_hp - avg_hp_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overview3">Overview</a></li>
+								<li><a href="#reviews3"> Reviews</a></li>                        
+							</ul>
+						    <div class="tab-content">
+						        <div id="overview3" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<h2 style="color: white;">After Voldemort takes over the Ministry of Magic, Harry, Ron and Hermione are forced into hiding. They try to decipher the clues left to them by Dumbledore to find and destroy Voldemort's Horcruxes.</h2>
+						            	</div>
+						            	<div class="col-md-4 col-xs-12 col-sm-12">
+						            		<div class="sb-it">
+						            			<h6>Director: </h6>
+						            			<p><a href="#">David Yates</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Writer: </h6>
+						            			<p><a href="#">JK Rowling</a> </p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Stars: </h6>
+						            			<p><a href="#">Daniel Radcliffe,</a> <a href="#">Rupert Grint,</a> <a href="#">Emma Watson
+                                                    ,</a><a href="#">Helena Bonham Carter</a>,<a href="#">Alan Rickman</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Run Time:</h6>
+						            			<p>146 min</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>MMPA Rating:</h6>
+						            			<p>PG-13</p>
+											</div>
+						            	</div>
+						            </div>
+						        </div>
+						        <div id="reviews3" class="tab review">
+						           <div class="row">
+						            	<div class="rv-hd">
+						            		<div class="div">
+							            		<h3>Related Movies To</h3>
+						       	 				<h2>Harry Potter and the Deathly Hallows Part 1</h2>
+							            	</div>
+							            	<a href="#" class="redbtn" href="/login">Write Review</a>
+                                        </div>
+                                        <div style="color: white;">
+                                            Please <button class="BUTTON_LRA" ><a href="/login">LOG In</a></button> to enter a review.
+                                        </div>
+                                        <!-- please login to enter to review -->
+						            </div>
+						        </div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <!-- Laxmii -->
+    <div class="container example" id="laxmi" style="height:14.28%; overflow-y:scroll;">
+		<div class="row ipad-width2">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="movie-img sticky-sb">
+					<img src="{{ url_for('static', filename='poster/laxmii.jpg')}}" alt="">
+					<div class="movie-btn">	
+						<div class="btn-transform transform-vertical red">
+							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+							<div><a href="https://www.youtube.com/embed/xw0gE8QA1W0" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct main-content">
+					<h1 class="bd-hd">Laxmii	<span>2020</span></h1>
+					<div class="movie-rate">
+						<div class="rate">
+							<i class="ion-android-star"></i>
+							{% if avg_lx == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_lx }}</span> /10<br>
+                                </p>
+                            {% endif %}
+                        </div>
+                        {% if avg_lx != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_lx_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_lx - avg_lx_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overview4">Overview</a></li>
+								<li><a href="#reviews4"> Reviews</a></li>                        
+							</ul>
+						    <div class="tab-content">
+						        <div id="overview4" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<h2 style="color: white;">Laxmii is a 2020 Indian Hindi-language comedy horror film written and directed by Raghava Lawrence in his first Bollywood directorial. A remake of his own 2011 Tamil film Kanchana, it stars Akshay Kumar and Kiara Advani in the lead roles.</h2>
+						            	</div>
+						            	<div class="col-md-4 col-xs-12 col-sm-12">
+						            		<div class="sb-it">
+						            			<h6>Director: </h6>
+						            			<p><a href="#">Raghava Lawrence</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Writer: </h6>
+						            			<p><a href="#">Raghava Lawrence,</a> <a href="#">Farhad Samji</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Stars: </h6>
+						            			<p><a href="#">Akshay Kumar,</a> <a href="#"> Kiara Advani,</a> <a href="#"> Sharad Kelkar,</a><a href="#"> Rajesh Sharma</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Run Time:</h6>
+						            			<p>141 min</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>MMPA Rating:</h6>
+						            			<p>U/A</p>
+											</div>
+						            	</div>
+						            </div>
+						        </div>
+						        <div id="reviews4" class="tab review">
+						           <div class="row">
+						            	<div class="rv-hd">
+						            		<div class="div">
+							            		<h3>Related Movies To</h3>
+						       	 				<h2>Laxmii</h2>
+							            	</div>
+							            	<a href="#" class="redbtn" href="/login">Write Review</a>
+                                        </div>
+                                        <div style="color: white;">
+                                            Please <button class="BUTTON_LRA" ><a href="/login">LOG In</a></button> to enter a review.
+                                        </div>
+                                       <!-- please login to enter a review -->
+						            </div>
+					            </div>
+				        </div>
+			        </div>
+		        </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- blackwidow -->
+    <div class="container example" id="bw" style="height:14.28%; overflow-y:scroll;">
+        <div class="row ipad-width2">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="movie-img sticky-sb">
+                    <img src="{{ url_for('static', filename='poster/bw.jpg')}}" alt="">
+                    <div class="movie-btn"> 
+                        <div class="btn-transform transform-vertical red">
+                            <div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+                            <div><a href="https://www.youtube.com/embed/ybji16u608U" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="movie-single-ct main-content">
+                    <h1 class="bd-hd">Black Widow<span>2021</span></h1>
+                    <div class="movie-rate">
+                        <div class="rate">
+                            <i class="ion-android-star"></i>
+                            <p>N/A<br>
+                            </p>
+                        </div>
+                        <div class="rate-star">
+                            <p>Rate This Movie:  </p>
+                            <p>N/A</p>
+                        </div>
+                    </div>
+                    <div class="movie-tabs">
+                        <div class="tabs">
+                            <ul class="tab-links tabs-mv">
+                                <li class="active"><a href="#overview5">Overview</a></li>                        
+                            </ul>
+                            <div class="tab-content">
+                                <div id="overview5" class="tab active">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-12 col-xs-12">
+                                            <h2 style="color: white;">A film about Natasha and her quests between the films Civil War and Infinity War.</h2>
+                                        </div>
+                                        <div class="col-md-4 col-xs-12 col-sm-12">
+                                            <div class="sb-it">
+                                                <h6>Director: </h6>
+                                                <p><a href="#">Cate Shortland</a> </p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Writer: </h6>
+                                                <p><a href="#">Jac Schaeffer,</a> <a href="#"> Ned Benson</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Stars: </h6>
+                                                <p><a href="#">Scarlett Johansson,</a> <a href="#"> David Harbor,</a> <a href="#"> Rachel Weisz,</a><a href="#"> Florence Pugh</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Run Time:</h6>
+                                                <p>N/A</p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>MMPA Rating:</h6>
+                                                <p>PG-13</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- batman -->
+    
+    <div class="container example" id="batman" style="height:14.28%; overflow-y:scroll;">
+        <div class="row ipad-width2">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="movie-img sticky-sb">
+                    <img src="{{ url_for('static', filename='poster/batman.webp')}}" alt="">
+                    <div class="movie-btn">	
+                        <div class="btn-transform transform-vertical red">
+                            <div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+                            <div><a href="https://www.youtube.com/embed/NLOp_6uPccQ" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="movie-single-ct main-content">
+                    <h1 class="bd-hd">The Batman	<span>2021</span></h1>
+                    <div class="movie-rate">
+                        <div class="rate">
+                            <i class="ion-android-star"></i>
+                            <p>N/A<br>
+                            </p>
+                        </div>
+                        <div class="rate-star">
+                            <p>Rate This Movie:  </p>
+                            <p>N/A</p>
+                        </div>
+                    </div>
+                    <div class="movie-tabs">
+                        <div class="tabs">
+                            <ul class="tab-links tabs-mv">
+                                <li class="active"><a href="#overview6">Overview</a></li>                      
+                            </ul>
+                            <div class="tab-content">
+                                <div id="overview6" class="tab active">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-12 col-xs-12">
+                                            <h2 style="color: white;">The plot is unknown</h2>
+                                        </div>
+                                        <div class="col-md-4 col-xs-12 col-sm-12">
+                                            <div class="sb-it">
+                                                <h6>Director: </h6>
+                                                <p><a href="#">Matt Reeves</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Writer: </h6>
+                                                <p><a href="#">Peter Craig,</a> <a href="#">Bill Finger</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Stars: </h6>
+                                                <p><a href="#">Robert Pattinson,</a> <a href="#"> Colin Farrell,</a> <a href="#"> Zoë Kravitz,</a></p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>Run Time:</h6>
+                                                <p>N/A</p>
+                                            </div>
+                                            <div class="sb-it">
+                                                <h6>MMPA Rating:</h6>
+                                                <p>PG-13</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<footer class="ht-footer">
+	<div class="container">
+		<div class="flex-parent-ft">
+			<div class="flex-child-ft item1">
+				<div class="tabs">
+                    <ul class="tab-links-2">
+                        <li class="active"><a href="#tab21"> ABOUT US </a></li>
+                        <li ><a href="#tab22"> CONTACT US </a></li>
+                        <li><a href="#tab23">  RECOMMEND US  </a></li>                      
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab21" class="tab">
+                            <div class="row">
+                                <!-- content -->
+                                <p style="color: white;">Sentiment based movie rating system is an online system that automatically allows users to post reviews and stores them to rate movies based on user sentiments. The system analyzes the stored data to check for user sentiments associated with each comment. The system gathers all the comments for a particular movie and then calculates an average rating to score it. This score is generated for every movie in the system. Emotions of a user based on review analysis is shown. It automatically sorts good words and bad words from the review written by the user and rates the movie accordingly.</p>
+                            </div>
+                        </div>
+                        <div id="tab22" class="tab active">
+                           <div class="row">
+                                <!-- CONTACT US AT -->
+                            </div>
+                        </div>
+                        <div id="tab23" class="tab">
+                            <div class="row">
+                                <h2 class="footer_heading" style="color: white;">Email me</h2>
+                                <p><a href="mailto:hritiksingh016@gmail.com">hritiksingh016@gmail.com</a></p>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+			</div>
+        </div>
+        
+	</div>
+</footer>
+
+<!-- <script>
+    sd_star = document.querySelectorAll( '.rate-star-sd i')
+    for (let i = 0; i < 10 ; i++)
+    {
+        if (sd_star[i].classList.contains(ion-ios-star))
+            sd_star[i].classList.remove('ion-ios-star')
+        if (sd_star[i].classList.contains(ion-ios-star-half))
+            sd_star[i].classList.remove('ion-ios-star')
+        if (sd_star[i].classList.contains(ion-ios-star-outline))
+            sd_star[i].classList.remove('ion-ios-star')
+    }
+    let i = 0
+    avg = {{ avg_av }}
+    for (i = 0; i < avg ; i++) {
+        sd_star[i].classList.add('ion-ios-star')
+    }
+    if( avg/10 >= 0.5 && i < 10)
+    {
+        sd_star[i].classList.add('ion-ios-star-half')
+        i++
+    }
+    while(i < 10)
+    {
+        sd_star[i].classList.add('ion-ios-star-outline')
+        i++
+    }
+
+</script> -->
+
+<script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+<script src="{{ url_for('static', filename='js/plugins.js')}}"></script>
+<script src="{{ url_for('static', filename='js/plugins2.js')}}"></script>
+<script src="{{ url_for('static', filename='js/custom.js')}}"></script>
+
+
+</body>
+
+<!-- moviesingle11:03-->
+</html>

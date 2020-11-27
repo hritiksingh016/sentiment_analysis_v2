@@ -135,8 +135,7 @@ input[type=text]:focus {
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-right">               
-						<li style="margin-right:4px" ><button class="BUTTON_LRA" ><a href="/login">LOG In</a></button></li>
-						<li style="margin-left:4px" ><button class="BUTTON_LRA"><a href="/signup">sign up</a></button></li>
+						<li style="margin-right:4px" ><button class="BUTTON_LRA" ><a href="/">LOG OUT</a></button></li>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
@@ -147,7 +146,7 @@ input[type=text]:focus {
     <div class="slider movie-items">
         <div class="container">
             <div class="row">
-                <div class="social-link">
+                <div class="social-link">       
                     <p>Follow us: </p>
                     <a href="https://www.instagram.com/reel2reeal/?hl=en"><i class="ion-social-instagram"></i></a>
                 </div>
@@ -161,7 +160,12 @@ input[type=text]:focus {
                                 <span class="blue"><a href="#">Sci-fi</a></span> <span class="yell"><a href="#">action</a></span>
                             </div>
                             <h6><a href="#">Avengers:Endgame</a></h6>
-                            <p><i class="ion-android-star"></i><span>{{ avg_av }}</span> /10</p>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_av == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_av }}</span> /10</p>
+                                {% endif %}</p>
                         </div>
                     </div>
                     <div class="movie-item">
@@ -173,7 +177,13 @@ input[type=text]:focus {
                                 <span class="red"><a href="#">Fantasy</a></span> <span class="orange"><a href="#">Adventure</a></span>
                             </div>
                             <h6><a href="#">Harry Potter and the Deathly Hallows</a></h6>
-                            <p><i class="ion-android-star"></i><span>{{ avg_hp }}</span> /10</p>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_hp == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_hp }}</span> /10</p>
+                                {% endif %}
+                            </p>
                         </div>
                     </div>
                     <div class="movie-item">
@@ -185,7 +195,13 @@ input[type=text]:focus {
                                 <span class="green"><a href="#">Comedy</a></span> <span class="red"><a href="#">Drama</a></span>
                             </div>
                             <h6><a href="#">Chhalaang</a></h6>
-                            <p><i class="ion-android-star"></i><span>{{ avg_ch }}</span> /10</p>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_ch == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_ch }}</span> /10</p>
+                                {% endif %}
+                            </p>
                         </div>
                     </div>
                     <div class="movie-item">
@@ -197,7 +213,12 @@ input[type=text]:focus {
                                 <span class="blue"><a href="#">Biopic</a></span> 
                             </div>
                             <h6><a href="#">Shakuntala Devi</a></h6>
-                            <p><i class="ion-android-star"></i><span>{{ avg_sd }}</span> /10</p>
+                            <p><i class="ion-android-star"></i>
+                                {% if avg_sd == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_sd }}</span> /10</p>
+                                {% endif %}</p>
                         </div>
                     </div>
                     <div class="movie-item">
@@ -209,7 +230,13 @@ input[type=text]:focus {
                                 <span class="orange"><a href="#">Adventure</a></span> <span class="red"><a href="#">Horror</a></span>
                             </div>
                             <h6><a href="#">Laxmii</a></h6>
-                            <p><i class="ion-android-star"></i><span>{{ avg_lx }}</span> /10</p>
+                            <p><i class="ion-android-star"></i>
+                                
+                                {% if avg_lx == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_lx }}</span> /10</p>
+                                {% endif %}</p>
                         </div>
                     </div>
                     <div class="movie-item">
@@ -221,7 +248,8 @@ input[type=text]:focus {
                                 <span class="yell"><a href="#">action</a></span>
                             </div>
                             <h6><a href="#">The Batman</a></h6>
-                            <p><i class="ion-android-star"></i>N/A</p>
+                            <p><i class="ion-android-star"></i>
+                                <p><span id="js-sd">N/A</span></p></p>
                         </div>
                     </div>
                     <div class="movie-item">
@@ -233,7 +261,8 @@ input[type=text]:focus {
                                 <span class="blue"><a href="#">Sci-Fi</a></span>
                             </div>
                             <h6><a href="#">Black Widow</a></h6>
-                            <p><i class="ion-android-star"></i>N/A</p>
+                            <p><i class="ion-android-star"></i>
+                                <p><span id="js-sd">N/A</span></p></p>
                         </div>
                     </div>
                 </div>
@@ -269,7 +298,13 @@ input[type=text]:focus {
                                                 </div>
                                                 <div class="title-in">
                                                     <h6><a href="#">Avengers:Endgame</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ avg_av }}</span> /10</p>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_av == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_av }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,7 +318,13 @@ input[type=text]:focus {
                                                 </div>
                                                 <div class="title-in">
                                                     <h6><a href="#">Harry Potter and the Deathly Hallows</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ avg_hp }}</span> /10</p>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_hp == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_hp }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -297,7 +338,13 @@ input[type=text]:focus {
                                                 </div>
                                                 <div class="title-in">
                                                     <h6><a href="#">Chhalaang</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ avg_ch }}</span> /10</p>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_ch == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_ch }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -311,7 +358,13 @@ input[type=text]:focus {
                                                 </div>
                                                 <div class="title-in">
                                                     <h6><a href="#">Shakuntala Devi</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ avg_sd }}</span> /10</p>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_sd == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_sd }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -325,7 +378,13 @@ input[type=text]:focus {
                                                 </div>
                                                 <div class="title-in">
                                                     <h6><a href="#">Laxmii</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ avg_lx }}</span> /10</p>
+                                                    <p><i class="ion-android-star"></i>
+                                                        {% if avg_lx == 0 %}
+                                                        <p><span id="js-sd">N/A</span></p>
+                                                        {% else %}
+                                                            <p><span id="js-sd">{{ avg_lx }}</span> /10</p>
+                                                        {% endif %}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>	
@@ -345,7 +404,7 @@ input[type=text]:focus {
                                                 </div>
                                                 <div class="title-in">
                                                     <h6><a href="#">Black Widow</a></h6>
-                                                    <p><i class="ion-android-star"></i>N/A</p>
+                                                    <p><i class="ion-android-star"></i><p><span id="js-sd">N/A</span></p></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -359,7 +418,7 @@ input[type=text]:focus {
                                                 </div>
                                                 <div class="title-in">
                                                     <h6><a href="#">The Batman</a></h6>
-                                                    <p><i class="ion-android-star"></i>N/A</p>
+                                                    <p><i class="ion-android-star"></i><p><span id="js-sd">N/A</span></p></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -395,19 +454,25 @@ input[type=text]:focus {
                     <div class="movie-rate">
                         <div class="rate">
                             <i class="ion-android-star"></i>
-                            <p><span id="js-sd">{{ avg_sd }}</span> /10<br>
-                            </p>
-                        </div>
-                        <div class="rate-star">
-                            <p>Movie Rating:  </p>
-                            {% for x in range(0,avg_sd_int) %}
-                                <i class="ion-ios-star"></i>
-                            {% endfor %}
-                            {% if (avg_sd - avg_sd_int) >= 0.5 %}
-                                <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                            {% if avg_sd == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_sd }}</span> /10<br>
+                                </p>
                             {% endif %}
-                            
                         </div>
+                        {% if avg_sd != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_sd_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_sd - avg_sd_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="movie-tabs">
                         <div class="tabs">
@@ -619,18 +684,25 @@ input[type=text]:focus {
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span>{{ avg_av }}</span> /10<br>
-							</p>
-						</div>
-						<div class="rate-star">
-							<p>Movie Rating:  </p>
-							{% for x in range(0,avg_av_int) %}
-                                <i class="ion-ios-star"></i>
-                            {% endfor %}
-                            {% if (avg_av - avg_av_int) >= 0.5 %}
-                                <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+							{% if avg_av == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_av }}</span> /10<br>
+                                </p>
                             {% endif %}
-						</div>
+                        </div>
+                        {% if avg_av != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_av_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_av - avg_av_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
 					</div>
 					<div class="movie-tabs">
 						<div class="tabs">
@@ -732,18 +804,25 @@ input[type=text]:focus {
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span>{{ avg_hp }}</span> /10<br>
-							</p>
-						</div>
-						<div class="rate-star">
-							<p>Movie Rating:  </p>
-							{% for x in range(0,avg_hp_int) %}
-                                <i class="ion-ios-star"></i>
-                            {% endfor %}
-                            {% if (avg_hp - avg_hp_int) >= 0.5 %}
-                                <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+							{% if avg_hp == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_hp }}</span> /10<br>
+                                </p>
                             {% endif %}
-						</div>
+                        </div>
+                        {% if avg_hp != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_hp_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_hp - avg_hp_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
 					</div>
 					<div class="movie-tabs">
 						<div class="tabs">
@@ -845,18 +924,25 @@ input[type=text]:focus {
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span>{{avg_lx}}</span> /10<br>
-							</p>
-						</div>
-						<div class="rate-star">
-							<p>Movie Rating:  </p>
-							{% for x in range(0,avg_lx_int) %}
-                                <i class="ion-ios-star"></i>
-                            {% endfor %}
-                            {% if (avg_lx - avg_lx_int) >= 0.5 %}
-                                <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+							{% if avg_lx == 0 %}
+                            <p><span id="js-sd">N/A</span></p>
+                            {% else %}
+                                <p><span id="js-sd">{{ avg_lx }}</span> /10<br>
+                                </p>
                             {% endif %}
-						</div>
+                        </div>
+                        {% if avg_lx != 0 %}
+                            <div class="rate-star">
+                                <p>Movie Rating:  </p>
+                                {% for x in range(0,avg_lx_int) %}
+                                    <i class="ion-ios-star"></i>
+                                {% endfor %}
+                                {% if (avg_lx - avg_lx_int) >= 0.5 %}
+                                    <i class="ion-ios-star-half" style="color:#f5b50a"></i>
+                                {% endif %}
+                                
+                            </div>
+                        {% endif %}
 					</div>
 					<div class="movie-tabs">
 						<div class="tabs">
