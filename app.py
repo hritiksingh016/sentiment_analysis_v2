@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import pickle
-from flask import Flask, jsonify, render_template, request,redirect,url_for
+from flask import Flask, jsonify, render_template, request,redirect,url_for,session,g
 from flask_ngrok import run_with_ngrok
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
@@ -51,13 +51,57 @@ def pred(usermoviereview):
 
 # webapp
 app = Flask(__name__, template_folder='./') 
-
+app.secret_key= 'somesecretkey'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 
 db = SQLAlchemy(app)
 
+@app.before_request
+def before_request():
+    if 'user_id' in session:
+        user = register.query.filter_by(id=session['user_id']).first()
+        g.user = user
+
+
 run_with_ngrok(app)
+
+@app.route("/delete", methods=["POST"])
+def delete():
+    if 'sd_rev_id' in request.form :
+        rev_id = request.form.get("sd_rev_id")
+        del_rev = shakuntala.query.filter_by(id=rev_id).first()
+        db.session.delete(del_rev)
+        db.session.commit()
+        return redirect(url_for('admin'))
+    
+    if 'ch_rev_id' in request.form :
+        rev_id = request.form.get("ch_rev_id")
+        del_rev = chhalaang.query.filter_by(id=rev_id).first()
+        db.session.delete(del_rev)
+        db.session.commit()
+        return redirect(url_for('admin')) 
+    
+    if 'av_rev_id' in request.form :
+        rev_id = request.form.get("av_rev_id")
+        del_rev = avengers.query.filter_by(id=rev_id).first()
+        db.session.delete(del_rev)
+        db.session.commit()
+        return redirect(url_for('admin'))
+    
+    if 'hp_rev_id' in request.form :
+        rev_id = request.form.get("hp_rev_id")
+        del_rev = harry.query.filter_by(id=rev_id).first()
+        db.session.delete(del_rev)
+        db.session.commit()
+        return redirect(url_for('admin'))
+    
+    if 'lx_rev_id' in request.form :
+        rev_id = request.form.get("lx_rev_id")
+        del_rev = laxmii.query.filter_by(id=rev_id).first()
+        db.session.delete(del_rev)
+        db.session.commit()
+        return redirect(url_for('admin'))
 
 class shakuntala(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -139,10 +183,16 @@ def login():
             return render_template("login.html",message='Please enter a username or email')
         if request.form['password'] == '':
             return render_template("login.html",message='Please enter your password')
+
+        if request.form['name'] == 'Admin' or request.form['email'] == 'admin@blockbuster.in':
+            if request.form['password'] == '@dmin':
+                return redirect(url_for('admin'))
+
         if request.form['name'] != '':
             user_name = register.query.filter_by(username=request.form['name']).first()
             if user_name:
                 if request.form['password'] == user_name.password:
+                    session['user_id'] = user_name.id
                     avg_sd = 0
                     avg_ch = 0
                     avg_hp = 0
@@ -210,6 +260,7 @@ def login():
             user_email = register.query.filter_by(email=request.form['email']).first()
             if user_email:
                 if request.form['password'] == user_email.password:
+                    session['user_id'] = user_email.id
                     avg_sd = 0
                     avg_ch = 0
                     avg_hp = 0
@@ -332,6 +383,17 @@ def signup():
         return render_template("signup.html", message_list=message_list)
         
     return render_template("signup.html", message_list={})
+
+
+@app.route('/admin', methods=['GET'])
+def admin() :
+    all_users = register.query.all()
+    sd_revs = shakuntala.query.all()
+    ch_revs = chhalaang.query.all()
+    av_revs = avengers.query.all()
+    hp_revs = harry.query.all()
+    lx_revs = laxmii.query.all()
+    return render_template('admin.html', all_users=all_users,sd_revs=sd_revs,ch_revs=ch_revs,av_revs=av_revs,hp_revs=hp_revs,lx_revs=lx_revs)
 
 def truncate(number) -> float:
     stepper = 10
@@ -472,6 +534,8 @@ def dashboard():
 
 
     if request.method == "POST":
+        if request.form['name'] == '' or request.form['message'] == '':
+            return redirect(url_for('dashboard'))
         sdf = shakuntala.query.all()
         count = 0
         avg_sd = 0

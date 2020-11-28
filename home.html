@@ -134,7 +134,11 @@ input[type=text]:focus {
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav flex-child-menu menu-right">               
+					<ul class="nav navbar-nav flex-child-menu menu-right" style="text-align:right ;">
+                        {% if g.user %}
+                        <li><span style="color: white; margin-right: 5px;">{{g.user.username}}</span></li>
+                        <li><span style="color: white; margin-right: 5px;">{{g.user.email}}</span></li>     
+                        {% endif %}          
 						<li style="margin-right:4px" ><button class="BUTTON_LRA" ><a href="/">LOG OUT</a></button></li>
 					</ul>
 				</div>
