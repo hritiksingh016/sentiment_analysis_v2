@@ -576,8 +576,11 @@ input[type=text]:focus {
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span>{{ avg_ch }}</span> /10<br>
-							</p>
+                                {% if avg_ch == 0 %}
+                                <p><span id="js-sd">N/A</span></p>
+                                {% else %}
+                                    <p><span id="js-sd">{{ avg_ch }}</span> /10</p>
+                                {% endif %}
 						</div>
 						<div class="rate-star">
 							<p>Movie Rating:  </p>

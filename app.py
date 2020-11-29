@@ -222,7 +222,7 @@ def login():
 
                     sdf2 = chhalaang.query.all()
                     count = 0
-                    for q in sdf:
+                    for q in sdf2:
                         avg_ch += q.percent
                         count += 1
                     if count != 0:
@@ -290,7 +290,7 @@ def login():
 
                     sdf2 = chhalaang.query.all()
                     count = 0
-                    for q in sdf:
+                    for q in sdf2:
                         avg_ch += q.percent
                         count += 1
                     if count != 0:
@@ -431,7 +431,7 @@ def main():
 
     sdf2 = chhalaang.query.all()
     count = 0
-    for q in sdf:
+    for q in sdf2:
         avg_ch += q.percent
         count += 1
     if count != 0:
@@ -499,7 +499,7 @@ def dashboard():
 
     sdf2 = chhalaang.query.all()
     count = 0
-    for q in sdf:
+    for q in sdf2:
         avg_ch += q.percent
         count += 1
     if count != 0:
@@ -563,7 +563,7 @@ def dashboard():
         count = 0
         avg_ch = 0
 
-        for q in sdf:
+        for q in sdf2:
             avg_ch += q.percent
             count += 1
         if count != 0:
@@ -623,10 +623,7 @@ def dashboard():
             if count != 0:
                 avg_sd /= count
                 avg_sd *= 10
-            sdf2 = chhalaang.query.all()
-            sdf3 = avengers.query.all()
-            sdf4 = harry.query.all()
-            sdf5 = laxmii.query.all()
+
 
             avg_sd = truncate(avg_sd)
             avg_sd_int = int(avg_sd)
@@ -634,9 +631,6 @@ def dashboard():
             return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
         if 'hp' in request.form:
             hp_rev(request)
-            sdf = shakuntala.query.all()
-            sdf2 = chhalaang.query.all()
-            sdf3 = avengers.query.all()
             sdf4 = harry.query.all()
             count = 0
             avg_hp = 0
@@ -646,7 +640,6 @@ def dashboard():
             if count != 0:
                 avg_hp /= count
                 avg_hp *= 10
-            sdf5 = laxmii.query.all()
 
             avg_hp = truncate(avg_hp)
             
@@ -654,8 +647,7 @@ def dashboard():
             return render_template("home.html",revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
         if 'av' in request.form:
             avengers_rev(request)
-            sdf = shakuntala.query.all()
-            sdf2 = chhalaang.query.all()
+
             sdf3 = avengers.query.all()
             count = 0
             avg_av = 0
@@ -665,8 +657,6 @@ def dashboard():
             if count != 0:
                 avg_av /= count
                 avg_av *= 10
-            sdf4 = harry.query.all()
-            sdf5 = laxmii.query.all()
 
 
             avg_av = truncate(avg_av)
@@ -674,7 +664,6 @@ def dashboard():
             return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
         if 'ch' in request.form:
             chhalaang_rev(request)
-            sdf = shakuntala.query.all()
             sdf2 = chhalaang.query.all()
             count = 0
             avg_ch = 0
@@ -684,9 +673,6 @@ def dashboard():
             if count != 0:
                 avg_ch /= count
                 avg_ch *= 10
-            sdf3 = avengers.query.all()
-            sdf4 = harry.query.all()
-            sdf5 = laxmii.query.all()
 
             avg_ch = truncate(avg_ch)
             avg_ch_int = int(avg_ch)
@@ -694,10 +680,7 @@ def dashboard():
             return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
         if 'laxmii' in request.form:
             laxmii_rev(request)
-            sdf = shakuntala.query.all()
-            sdf2 = chhalaang.query.all()
-            sdf3 = avengers.query.all()
-            sdf4 = harry.query.all()
+
             sdf5 = laxmii.query.all()
             count = 0
             avg_lx = 0
