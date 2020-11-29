@@ -105,6 +105,39 @@ input[type=text]:focus {
    border-radius: 20px;
    text-decoration: none;
 }
+.alert {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #f44336;
+  color: white;
+  opacity: 0.5;
+  transition: opacity 0.6s;
+  margin-bottom: 12px;
+  -webkit-box-shadow: -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+  -moz-box-shadow:    -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+  box-shadow:         -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+}
+.alert.success {background-color: #4CAF50;
+    -webkit-box-shadow: -5px 5px 9px 0px rgba(37, 135, 50, 0.75);
+-moz-box-shadow:    -5px 5px 9px 0px rgba(37, 135, 50, 0.75);
+box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
     </style>
   
 </head>
@@ -523,7 +556,16 @@ input[type=text]:focus {
                                             </div>
                                             <a class="redbtn">Write Review</a>
                                         </div>
-
+                                        <div class="topbar-filter">
+											<p>Found <span>{{ count_sd }} reviews</span> in total</p>
+                                        </div>
+                                        {% if avg_sd <= 1.5 and count_sd >= 20 %}
+                                        <div class="alert" style="opacity:0.8; width:fit-content;">
+                                            <!-- <span class="closebtn">&times;</span> -->
+                                            We are currently not accepting reviews for this movie.
+                                        </div>
+                                        
+                                        {% else %}
                                         <form id="sdf" method=POST >
                                             <div class="form-group">
                                             <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
@@ -547,6 +589,7 @@ input[type=text]:focus {
                                             {% endfor %}
                                         </div>
                                         </form>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -637,6 +680,16 @@ input[type=text]:focus {
 							            	</div>
                                             <a  class="redbtn">Write Review</a>
                                         </div>
+                                        <div class="topbar-filter">
+											<p>Found <span>{{ count_ch }} reviews</span> in total</p>
+										</div>
+                                        {% if avg_ch <= 1.5 and count_ch >= 20 %}
+                                        <div class="alert" style="opacity:0.8; width:fit-content;">
+                                            <!-- <span class="closebtn">&times;</span> -->
+                                            We are currently not accepting reviews for this movie.
+                                        </div>
+
+                                        {% else %}
                                         <form id="ch" method=POST>
                                             <div class="form-group" style="width: 85%;">
                                                 <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
@@ -660,6 +713,7 @@ input[type=text]:focus {
                                                     {% endfor %}
                                                 </div>
                                         </form>
+                                        {% endif %}
                                         <h2><span id="rev-ch"></span></h2>
 						            </div>
 						        </div>
@@ -756,6 +810,15 @@ input[type=text]:focus {
 							            	</div>
 							            	<a href="#" class="redbtn">Write Review</a>
                                         </div>
+                                        <div class="topbar-filter">
+											<p>Found <span>{{ count_av }} reviews</span> in total</p>
+                                        </div>
+                                        {% if avg_av <= 1.5 and count_av >= 20 %}
+                                        <div class="alert" style="opacity:0.8; width:fit-content;">
+                                            <!-- <span class="closebtn">&times;</span> -->
+                                            We are currently not accepting reviews for this movie.
+                                        </div>
+                                        {% else %}
                                         <form id="av" method=POST>
                                             <div class="form-group">
                                                 <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
@@ -766,20 +829,21 @@ input[type=text]:focus {
                                             <!-- </div> -->
                                                 <button type="submit"  name="av" class="myButton" style="margin-bottom:15px;" >Submit</button>
                                                 <br>
-                                        </form>
-                                        <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px;">
-                                            {% for re in revs3 %}
-                                                <div style="background-image: linear-gradient(to right,rgb(25, 40, 70),rgb(55, 75, 112),rgb(87, 102, 133), rgb(99, 115, 146),rgb(158, 175, 209));background-color: rgb(55, 75, 112); padding: 10px; box-shadow: -1px 15px 14px -7px rgb(63, 80, 114); border-radius:10px;">
-                                                    <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
-                                                    <p style="size: 3px; color: yellow;">{{re.date_entered}}</p>
-                                                    <div style="text-indent: 15px;">
-                                                        <p style="font-size: 20px; color: white;"><b>{{re.review }}</b></p>
-                                                        <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
-                                                    </div>
+                                                <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px;">
+                                                    {% for re in revs3 %}
+                                                        <div style="background-image: linear-gradient(to right,rgb(25, 40, 70),rgb(55, 75, 112),rgb(87, 102, 133), rgb(99, 115, 146),rgb(158, 175, 209));background-color: rgb(55, 75, 112); padding: 10px; box-shadow: -1px 15px 14px -7px rgb(63, 80, 114); border-radius:10px;">
+                                                            <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
+                                                            <p style="size: 3px; color: yellow;">{{re.date_entered}}</p>
+                                                            <div style="text-indent: 15px;">
+                                                                <p style="font-size: 20px; color: white;"><b>{{re.review }}</b></p>
+                                                                <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    {% endfor %}
                                                 </div>
-                                                <hr>
-                                            {% endfor %}
-                                        </div>
+                                        </form>
+                                        {% endif %}
                                         <h2><span id="rev-av"></span></h2>
 						            </div>
 						        </div>
@@ -877,6 +941,15 @@ input[type=text]:focus {
 							            	</div>
 							            	<a href="#" class="redbtn">Write Review</a>
                                         </div>
+                                        <div class="topbar-filter">
+											<p>Found <span>{{ count_hp }} reviews</span> in total</p>
+                                        </div>
+                                        {% if avg_hp <= 1.5 and count_hp >= 20 %}
+                                        <div class="alert" style="opacity:0.8; width:fit-content;">
+                                            <!-- <span class="closebtn">&times;</span> -->
+                                            We are currently not accepting reviews for this movie.
+                                        </div>
+                                        {% else %}
                                         <form id="hp" method=POST>
                                             <div class="form-group" style="width: 85%;">
                                                 <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
@@ -900,6 +973,7 @@ input[type=text]:focus {
                                                     {% endfor %}
                                                 </div>
                                         </form>
+                                        {% endif %}
                                         <h2><span id="rev-hp"></span></h2>
 						            </div>
 						        </div>
@@ -996,6 +1070,15 @@ input[type=text]:focus {
 							            	</div>
 							            	<a href="#" class="redbtn">Write Review</a>
                                         </div>
+                                        <div class="topbar-filter">
+											<p>Found <span>{{ count_lx }} reviews</span> in total</p>
+                                        </div>
+                                        {% if avg_lx <= 1.5 and count_lx >= 5 %}
+                                        <div class="alert" style="opacity:0.8; width:fit-content;">
+                                            <!-- <span class="closebtn">&times;</span> -->
+                                            We are currently not accepting reviews for this movie.
+                                        </div>
+                                        {% else %}
                                         <form id="laxmi" method=POST>
                                             <div class="form-group" style="width: 85%;">
                                             <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
@@ -1019,6 +1102,8 @@ input[type=text]:focus {
                                                     {% endfor %}
                                                 </div>
                                         </form>
+                                        
+                                        {% endif %}
                                         <h2><span id="rev-lx"></span></h2>
 						            </div>
 						        </div>

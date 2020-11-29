@@ -206,67 +206,6 @@ def login():
             if user_name:
                 if request.form['password'] == user_name.password:
                     session['user_id'] = user_name.id
-                    avg_sd = 0
-                    avg_ch = 0
-                    avg_hp = 0
-                    avg_av = 0
-                    avg_lx = 0
-                    sdf = shakuntala.query.all()
-                    count = 0
-                    for q in sdf:
-                        avg_sd += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_sd /= count
-                        avg_sd *= 10
-
-                    sdf2 = chhalaang.query.all()
-                    count = 0
-                    for q in sdf2:
-                        avg_ch += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_ch /= count
-                        avg_ch *= 10
-
-                    sdf3 = avengers.query.all()
-                    count = 0
-                    for q in sdf3:
-                        avg_av += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_av /= count
-                        avg_av *= 10
-
-                    sdf4 = harry.query.all()
-                    count = 0
-                    for q in sdf4:
-                        avg_hp += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_hp /= count
-                        avg_hp *= 10
-
-                    sdf5 = laxmii.query.all()
-                    count = 0
-                    for q in sdf5:
-                        avg_lx += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_lx /= count
-                        avg_lx *= 10
-                    
-                    avg_sd = truncate(avg_sd)
-                    avg_ch = truncate(avg_ch)
-                    avg_av = truncate(avg_av)
-                    avg_hp = truncate(avg_hp)
-                    avg_lx = truncate(avg_lx)
-
-                    avg_sd_int = int(avg_sd)
-                    avg_ch_int = int(avg_ch)
-                    avg_av_int = int(avg_av)
-                    avg_hp_int = int(avg_hp)
-                    avg_lx_int = int(avg_lx)
                     return redirect(url_for('dashboard'))
         
         if request.form['email'] != '':
@@ -274,67 +213,6 @@ def login():
             if user_email:
                 if request.form['password'] == user_email.password:
                     session['user_id'] = user_email.id
-                    avg_sd = 0
-                    avg_ch = 0
-                    avg_hp = 0
-                    avg_av = 0
-                    avg_lx = 0
-                    sdf = shakuntala.query.all()
-                    count = 0
-                    for q in sdf:
-                        avg_sd += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_sd /= count
-                        avg_sd *= 10
-
-                    sdf2 = chhalaang.query.all()
-                    count = 0
-                    for q in sdf2:
-                        avg_ch += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_ch /= count
-                        avg_ch *= 10
-
-                    sdf3 = avengers.query.all()
-                    count = 0
-                    for q in sdf3:
-                        avg_av += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_av /= count
-                        avg_av *= 10
-
-                    sdf4 = harry.query.all()
-                    count = 0
-                    for q in sdf4:
-                        avg_hp += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_hp /= count
-                        avg_hp *= 10
-
-                    sdf5 = laxmii.query.all()
-                    count = 0
-                    for q in sdf5:
-                        avg_lx += q.percent
-                        count += 1
-                    if count != 0:
-                        avg_lx /= count
-                        avg_lx *= 10
-                    
-                    avg_sd = truncate(avg_sd)
-                    avg_ch = truncate(avg_ch)
-                    avg_av = truncate(avg_av)
-                    avg_hp = truncate(avg_hp)
-                    avg_lx = truncate(avg_lx)
-
-                    avg_sd_int = int(avg_sd)
-                    avg_ch_int = int(avg_ch)
-                    avg_av_int = int(avg_av)
-                    avg_hp_int = int(avg_hp)
-                    avg_lx_int = int(avg_lx)
                     return redirect(url_for('dashboard'))
         
         return render_template("login.html", message='Incorrect Password!')
@@ -477,7 +355,12 @@ def main():
     avg_hp_int = int(avg_hp)
     avg_lx_int = int(avg_lx)
     
-    return render_template('home1.html',revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5, avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+    count_sd = shakuntala.query.count()
+    count_ch = chhalaang.query.count()
+    count_av = avengers.query.count()
+    count_hp = harry.query.count()
+    count_lx = laxmii.query.count()
+    return render_template('home1.html',revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5, avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int,count_sd=count_sd,count_ch=count_ch,count_av=count_av,count_hp=count_hp,count_lx=count_lx)
 
 
 @app.route('/dashboard', methods=['POST', 'GET'])
@@ -488,6 +371,11 @@ def dashboard():
     avg_hp = 0
     avg_av = 0
     avg_lx = 0
+    # count_sd = 0
+    # count_ch = 0
+    # count_av = 0
+    # count_hp = 0
+    # count_lx = 0
     sdf = shakuntala.query.all()
     count = 0
     for q in sdf:
@@ -545,6 +433,11 @@ def dashboard():
     avg_hp_int = int(avg_hp)
     avg_lx_int = int(avg_lx)
 
+    count_sd = shakuntala.query.count()
+    count_ch = chhalaang.query.count()
+    count_av = avengers.query.count()
+    count_hp = harry.query.count()
+    count_lx = laxmii.query.count()
 
     if request.method == "POST":
         if request.form['name'] == '' or request.form['message'] == '':
@@ -611,6 +504,12 @@ def dashboard():
         avg_av_int = int(avg_av)
         avg_hp_int = int(avg_hp)
         avg_lx_int = int(avg_lx)
+
+        count_sd = shakuntala.query.count()
+        count_ch = chhalaang.query.count()
+        count_av = avengers.query.count()
+        count_hp = harry.query.count()
+        count_lx = laxmii.query.count()
         if 'sd' in request.form:
             shakuntala_rev(request)
 
@@ -627,8 +526,9 @@ def dashboard():
 
             avg_sd = truncate(avg_sd)
             avg_sd_int = int(avg_sd)
+            count_sd = shakuntala.query.count()
 
-            return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+            return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int,count_sd=count_sd,count_ch=count_ch,count_av=count_av,count_hp=count_hp,count_lx=count_lx)
         if 'hp' in request.form:
             hp_rev(request)
             sdf4 = harry.query.all()
@@ -644,7 +544,8 @@ def dashboard():
             avg_hp = truncate(avg_hp)
             
             avg_hp_int = int(avg_hp)
-            return render_template("home.html",revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+            count_hp = harry.query.count()
+            return render_template("home.html",revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int,count_sd=count_sd,count_ch=count_ch,count_av=count_av,count_hp=count_hp,count_lx=count_lx)
         if 'av' in request.form:
             avengers_rev(request)
 
@@ -661,7 +562,8 @@ def dashboard():
 
             avg_av = truncate(avg_av)
             avg_av_int = int(avg_av)
-            return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+            count_av = avengers.query.count()
+            return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int,count_sd=count_sd,count_ch=count_ch,count_av=count_av,count_hp=count_hp,count_lx=count_lx)
         if 'ch' in request.form:
             chhalaang_rev(request)
             sdf2 = chhalaang.query.all()
@@ -676,8 +578,9 @@ def dashboard():
 
             avg_ch = truncate(avg_ch)
             avg_ch_int = int(avg_ch)
+            count_ch = chhalaang.query.count()
             
-            return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+            return render_template("home.html", revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int,count_sd=count_sd,count_ch=count_ch,count_av=count_av,count_hp=count_hp,count_lx=count_lx)
         if 'laxmii' in request.form:
             laxmii_rev(request)
 
@@ -693,9 +596,10 @@ def dashboard():
 
             avg_lx = truncate(avg_lx)
             avg_lx_int = int(avg_lx)
-            return render_template("home.html",revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+            count_lx = laxmii.query.count()
+            return render_template("home.html",revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int,count_sd=count_sd,count_ch=count_ch,count_av=count_av,count_hp=count_hp,count_lx=count_lx)
     
-    return render_template('home.html',revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5, avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
+    return render_template('home.html',revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5, avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int,count_sd=count_sd,count_ch=count_ch,count_av=count_av,count_hp=count_hp,count_lx=count_lx)
 
 
 @app.route('/forgot-password', methods=['GET','POST'])
