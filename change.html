@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style>
+        .alert {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #f44336;
+  color: white;
+  opacity: 0.5;
+  transition: opacity 0.6s;
+  margin-bottom: 12px;
+  -webkit-box-shadow: -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+  -moz-box-shadow:    -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+  box-shadow:         -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+}
+
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+    </style>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">	
+        <div class="row">
+        <h2><strong>Change Password</strong></h2><br/>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <!-- Start form -->
+                        <form method="POST">
+                          <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                          </div>
+                          <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+                          </div>
+                          <div class="form-check">
+                            <!-- <button class="btn btn-info" type="button" name="showpassword" id="showpassword" value="Show Password">Show password</button>  -->
+                            <button type="submit" class="btn btn-primary"value="submit">Submit</button>
+                          </div>
+                          
+                        </form>
+    
+    
+                <!-- End form -->
+            </div>
+            
+        
+            
+        </div>
+        <div>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                <div class="alert">
+                    <span class="closebtn">&times;</span>
+                    {{message}}
+                </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+        
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+        </script>
+    <!-- <script>
+        jQuery(document).ready(function(){
+
+
+// Show password Button
+$("#showpassword").on('click', function(){
+    
+    var pass = $("#password");
+    var fieldtype = pass.attr('type');
+    if (fieldtype == 'password') {
+        pass.attr('type', 'text');
+        $(this).text("Hide Password");
+    }else{
+        pass.attr('type', 'password');
+        $(this).text("Show Password");
+    }
+
+
+});
+});
+
+    </script> -->
+</body>
+</html>

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import pickle
-from flask import Flask, jsonify, render_template, request,redirect,url_for,session,g
+from flask import Flask, jsonify, render_template, request,redirect,url_for,session,g,flash
 from flask_ngrok import run_with_ngrok
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
@@ -9,6 +9,8 @@ import h5py
 from keras.models import load_model
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 import pytz
 import math
 
@@ -51,11 +53,22 @@ def pred(usermoviereview):
 
 # webapp
 app = Flask(__name__, template_folder='./') 
+
 app.secret_key= 'somesecretkey'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = '465'
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USERNAME'] = 'reel2reeal'
+app.config['MAIL_PASSWORD'] = 'muskiloveshritik'
+
 
 db = SQLAlchemy(app)
+
+mail = Mail(app)
+s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
 @app.before_request
 def before_request():
@@ -322,9 +335,9 @@ def login():
                     avg_av_int = int(avg_av)
                     avg_hp_int = int(avg_hp)
                     avg_lx_int = int(avg_lx)
-                    return render_template('home.html', revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5,avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
-        else:
-            return render_template("login.html", message='Incorrect Password!')
+                    return redirect(url_for('dashboard'))
+        
+        return render_template("login.html", message='Incorrect Password!')
         
     return render_template("login.html", message='')
 
@@ -702,8 +715,49 @@ def dashboard():
     return render_template('home.html',revs1=sdf, revs2=sdf2, revs3=sdf3, revs4=sdf4, revs5=sdf5, avg_sd=avg_sd, avg_av=avg_av, avg_ch=avg_ch, avg_hp=avg_hp, avg_lx=avg_lx,avg_sd_int=avg_sd_int,avg_ch_int=avg_ch_int,avg_av_int=avg_av_int,avg_hp_int=avg_hp_int,avg_lx_int=avg_lx_int)
 
 
+@app.route('/forgot-password', methods=['GET','POST'])
+def forgot():
+    if request.method == 'POST':
+        email = request.form['email']
+        user = register.query.filter_by(email=email).first()
+        if user:
+            token = s.dumps(email, salt='email-confirm')
 
+            msg = Message('Click on this link to reset your password ', sender='reel2reeal@gmail.com', recipients=[email])
 
+            link = url_for('change_password', token=token, _external=True)
+
+            msg.body = ' link : {}'.format(link)
+
+            mail.send(msg)
+            flash('A link has been sent to the specified email. Please Check!', 'info')
+            return redirect(url_for('forgot'))
+        flash('This email id is not registered')
+        return redirect(url_for('forgot'))
+    return render_template("forgot.html")
+
+@app.route('/change_password/<token>', methods=['GET',"POST"])
+def change_password(token):
+    if request.method == 'POST':
+        try:
+            email = s.loads(token, salt='email-confirm', max_age=3600)
+            user = register.query.filter_by(email=email).first()
+            if request.form['password'] != request.form['confirm_password']:
+                flash('Passwords do not match')
+                return redirect(url_for('change_password',token=token))
+            
+            if request.form['password'] == user.password:
+                flash('Choose a different password')
+                return redirect(url_for('change_password',token=token))
+            user.password = request.form['password']
+            db.session.commit()
+            flash('Password has been changed successfully!')
+            flash('login to continue.')
+            return redirect(url_for('login'))
+        except SignatureExpired:
+            return '<h1>The token is expired!</h1>'
+    else:
+        return render_template('change.html')
 
 if __name__ == '__main__':
     app.run()

@@ -24,7 +24,12 @@
   -moz-box-shadow:    -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
   box-shadow:         -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
 }
-
+.alert.success {background-color: #4CAF50;
+    -webkit-box-shadow: -5px 5px 9px 0px rgba(37, 135, 50, 0.75);
+-moz-box-shadow:    -5px 5px 9px 0px rgba(37, 135, 50, 0.75);
+box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
 
 .closebtn {
   margin-left: 15px;
@@ -45,7 +50,19 @@
 <body>
 
     <div class="main">
-
+        <div>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                <div class="alert success" style="opacity:0.8; width:fit-content;">
+                    <span class="closebtn">&times;</span>
+                    {{message}}
+                </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            </div>
+        </div>
         <div class="container">
             <div class="signup-content">
                 <form method="POST" id="signup-form" class="signup-form">
@@ -73,6 +90,10 @@
 							{{message}}
 						</div>
 						{% endif %}
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden">
+                        <a href="/forgot-password" style="color: white;">Forgot Password?</a>
                     </div>
                 </form>
             </div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    .alert {
+padding: 12px;
+border-radius: 4px;
+background-color: #f44336;
+color: white;
+opacity: 0.5;
+transition: opacity 0.6s;
+margin-bottom: 12px;
+-webkit-box-shadow: -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+-moz-box-shadow:    -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+box-shadow:         -5px 5px 9px 0px rgba(142, 76, 50, 0.75);
+}
+
+.alert.success {background-color: #4CAF50;
+    -webkit-box-shadow: -5px 5px 9px 0px rgba(37, 135, 50, 0.75);
+-moz-box-shadow:    -5px 5px 9px 0px rgba(37, 135, 50, 0.75);
+box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+margin-left: 15px;
+color: white;
+font-weight: bold;
+float: right;
+font-size: 22px;
+line-height: 20px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.closebtn:hover {
+color: black;
+}
+</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Enter Your email</h2>
+  <form class="form-horizontal" method="POST">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-danger">Submit</button>
+      </div>
+    </div>
+  </form>
+  <div>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+        <div class="alert">
+            <span class="closebtn">&times;</span>
+            {{message}}
+        </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+	
+	{% block body %}{% endblock %}
+	</div>
+</div>
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+    
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function(){
+        var div = this.parentElement;
+        div.style.opacity = "0";
+        setTimeout(function(){ div.style.display = "none"; }, 600);
+      }
+    }
+    </script>
+</body>
+</html>
