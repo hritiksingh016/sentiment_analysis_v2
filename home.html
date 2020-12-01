@@ -164,15 +164,21 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
 							<span></span>
 						</div>
 				    </div>
+				    <a href="home.html"><img class="logo" src="static/images/logo1.png" alt="" width="119" height="58"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav flex-child-menu menu-right" style="text-align:right ;">
-                        {% if g.user %}
-                        <li><span style="color: white; margin-right: 5px;">{{g.user.username}}</span></li>
-                        <li><span style="color: white; margin-right: 5px;">{{g.user.email}}</span></li>     
-                        {% endif %}          
-						<li style="margin-right:4px" ><button class="BUTTON_LRA" ><a href="/">LOG OUT</a></button></li>
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						{% if g.user %}
+                        <li><span style="color: white; margin-right: 5px;"> Hello {{g.user.username}}!</span></li>
+                        <!-- <li><span style="color: white; margin-right: 5px;">{{g.user.email}}</span></li>      -->
+                        {% endif %}
+						<li class="btn" style="margin:5px"><a href="/">LOG OUT</a></li>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
@@ -495,6 +501,7 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_sd }}</span> /10<br>
+                                    <span class="rv">{{count_sd}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
@@ -622,7 +629,8 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                                 {% if avg_ch == 0 %}
                                 <p><span id="js-sd">N/A</span></p>
                                 {% else %}
-                                    <p><span id="js-sd">{{ avg_ch }}</span> /10</p>
+                                    <p><span id="js-sd">{{ avg_ch }}</span> /10<br>
+                                        <span class="rv">{{count_ch}} Reviews</span></p>
                                 {% endif %}
 						</div>
 						<div class="rate-star">
@@ -749,6 +757,7 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_av }}</span> /10<br>
+                                    <span class="rv">{{count_av}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
@@ -879,6 +888,7 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_hp }}</span> /10<br>
+                                    <span class="rv">{{count_hp}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
@@ -1009,6 +1019,7 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_lx }}</span> /10<br>
+                                    <span class="rv">{{count_lx}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
@@ -1266,26 +1277,37 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                     <ul class="tab-links-2">
                         <li class="active"><a href="#tab21"> ABOUT US </a></li>
                         <li ><a href="#tab22"> CONTACT US </a></li>
-                        <li><a href="#tab23">  RECOMMEND US  </a></li>                      
+                        <li><a href="#tab23">  RECOMMEND US  </a></li> 
+                        <li><a href="#tab24">  FAQ </a></li>                      
                     </ul>
                     <div class="tab-content">
                         <div id="tab21" class="tab">
                             <div class="row">
                                 <!-- content -->
-                                <p style="color: white;">Sentiment based movie rating system is an online system that automatically allows users to post reviews and stores them to rate movies based on user sentiments. The system analyzes the stored data to check for user sentiments associated with each comment. The system gathers all the comments for a particular movie and then calculates an average rating to score it. This score is generated for every movie in the system. Emotions of a user based on review analysis is shown. It automatically sorts good words and bad words from the review written by the user and rates the movie accordingly.</p>
+                                <h5 style="color: white;">Sentiment based movie rating system is an online system that automatically allows users to post reviews and stores them to rate movies based on user sentiments. The system analyzes the stored data to check for user sentiments associated with each comment. The system gathers all the comments for a particular movie and then calculates an average rating to score it. This score is generated for every movie in the system. Emotions of a user based on review analysis is shown. It automatically sorts good words and bad words from the review written by the user and rates the movie accordingly.</h5>
                             </div>
                         </div>
-                        <div id="tab22" class="tab active">
+                        <div id="tab22" class="tab">
                            <div class="row">
                                 <!-- CONTACT US AT -->
+                                <h3 style="color: white;">  Please feel free to contact us at:</h3>
+                                <p>    (+91)8800906243</p>
                             </div>
                         </div>
                         <div id="tab23" class="tab">
                             <div class="row">
-                                <h2 class="footer_heading" style="color: white;">Email me</h2>
-                                <p><a href="mailto:hritiksingh016@gmail.com">hritiksingh016@gmail.com</a></p>
+                                <img src="static/images/gmail.png" alt="" style="height:50px;width: auto;">
+                                <h4 class="footer_heading" style="color: white;">We would love to know the movies you want to be reviewed on our website, we are always open for reccomendations, E-mail us at:</h4>
+                                <p><a href="mailto:hritiksingh016@gmail.com">reel2reeal@gmail.com</a></p>
                             </div>
+                        </div>
+                        <div id="tab24" class="tab">
+                            <div class="row">
+                                <!-- content -->
+                                <h4>How do we know the reviews on your website are genuine or not??</h4><br>
+                                <h5 style="color: white;">The main aim of our website is to give as genuine reviews as possible. We want our users to rate honestly. We don't want the ratings to be biased, but if in future we face any situation where the movie is not being rated on its content but because of personal aggression, we will simply stop taking revisews for that specific movie from our users, which is also another way of saying that "Reviews for the given film are not genuine"</h5>
                             </div>
+                        </div>
                     </div>
                 </div>
 			</div>

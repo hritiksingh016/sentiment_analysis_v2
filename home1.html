@@ -131,12 +131,18 @@ input[type=text]:focus {
 							<span></span>
 						</div>
 				    </div>
+				    <a href="home.html"><img class="logo" src="static/images/logo1.png" alt="" width="119" height="58"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav flex-child-menu menu-right">               
-						<li style="margin-right:4px" ><button class="BUTTON_LRA" ><a href="/login">LOG In</a></button></li>
-						<li style="margin-left:4px" ><button class="BUTTON_LRA"><a href="/signup">sign up</a></button></li>
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						<li class="btn" style="margin:5px"><a href="/login">LOG In</a></li>
+						<li class="btn" style="margin:5px"><a href="/signup">sign up</a></li>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
@@ -459,6 +465,7 @@ input[type=text]:focus {
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_sd }}</span> /10<br>
+                                    <span class="rv">{{count_sd}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
@@ -556,7 +563,9 @@ input[type=text]:focus {
 							{% if avg_ch == 0 %}
                                 <p><span id="js-sd">N/A</span></p>
                                 {% else %}
-                                    <p><span id="js-sd">{{ avg_ch }}</span> /10</p>
+                                    <p><span id="js-sd">{{ avg_ch }}</span> /10<br>
+                                        <span class="rv">{{count_ch}} Reviews</span>
+                                    </p>
                                 {% endif %}
 						</div>
 						<div class="rate-star">
@@ -653,6 +662,7 @@ input[type=text]:focus {
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_av }}</span> /10<br>
+                                    <span class="rv">{{count_av}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
@@ -752,6 +762,7 @@ input[type=text]:focus {
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_hp }}</span> /10<br>
+                                    <span class="rv">{{count_hp}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
@@ -852,6 +863,7 @@ input[type=text]:focus {
                             <p><span id="js-sd">N/A</span></p>
                             {% else %}
                                 <p><span id="js-sd">{{ avg_lx }}</span> /10<br>
+                                    <span class="rv">{{count_lx}} Reviews</span>
                                 </p>
                             {% endif %}
                         </div>
