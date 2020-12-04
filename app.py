@@ -83,98 +83,107 @@ run_with_ngrok(app)
 def delete():
     if 'sd_rev_id' in request.form :
         rev_id = request.form.get("sd_rev_id")
-        del_rev = shakuntala.query.filter_by(id=rev_id).first()
+        del_rev = shakuntala.query.filter_by(sd_id=rev_id).first()
         db.session.delete(del_rev)
         db.session.commit()
         return redirect(url_for('admin'))
     
     if 'ch_rev_id' in request.form :
         rev_id = request.form.get("ch_rev_id")
-        del_rev = chhalaang.query.filter_by(id=rev_id).first()
+        del_rev = chhalaang.query.filter_by(ch_id=rev_id).first()
         db.session.delete(del_rev)
         db.session.commit()
         return redirect(url_for('admin')) 
     
     if 'av_rev_id' in request.form :
         rev_id = request.form.get("av_rev_id")
-        del_rev = avengers.query.filter_by(id=rev_id).first()
+        del_rev = avengers.query.filter_by(av_id=rev_id).first()
         db.session.delete(del_rev)
         db.session.commit()
         return redirect(url_for('admin'))
     
     if 'hp_rev_id' in request.form :
         rev_id = request.form.get("hp_rev_id")
-        del_rev = harry.query.filter_by(id=rev_id).first()
+        del_rev = harry.query.filter_by(hp_id=rev_id).first()
         db.session.delete(del_rev)
         db.session.commit()
         return redirect(url_for('admin'))
     
     if 'lx_rev_id' in request.form :
         rev_id = request.form.get("lx_rev_id")
-        del_rev = laxmii.query.filter_by(id=rev_id).first()
+        del_rev = laxmii.query.filter_by(lx_id=rev_id).first()
         db.session.delete(del_rev)
         db.session.commit()
         return redirect(url_for('admin'))
 
 class shakuntala(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    sd_id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20))
     review = db.Column(db.String(500))
     percent = db.Column(db.Integer)
     date_entered = db.Column(db.String, default=aslocaltimestr(datetime.now()))
+    user_id = db.Column(db.Integer, db.ForeignKey('register.id'))
 
 class chhalaang(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    ch_id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20))
     review = db.Column(db.String(500))
     percent = db.Column(db.Integer)
     date_entered = db.Column(db.String, default=aslocaltimestr(datetime.now()))
+    user_id = db.Column(db.Integer, db.ForeignKey('register.id'))
 
 class harry(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    hp_id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20))
     review = db.Column(db.String(500))
     percent = db.Column(db.Integer)
     date_entered = db.Column(db.String, default=aslocaltimestr(datetime.now()))
+    user_id = db.Column(db.Integer, db.ForeignKey('register.id'))
 
 class avengers(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    av_id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20))
     review = db.Column(db.String(500))
     percent = db.Column(db.Integer)
     date_entered = db.Column(db.String, default=aslocaltimestr(datetime.now()))
+    user_id = db.Column(db.Integer, db.ForeignKey('register.id'))
 
 class laxmii(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
+    lx_id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20))
     review = db.Column(db.String(500))
     percent = db.Column(db.Float)
     date_entered = db.Column(db.String, default=aslocaltimestr(datetime.now()))
+    user_id = db.Column(db.Integer, db.ForeignKey('register.id'))
 
 def shakuntala_rev(request):
     sentiment_s = pred(str(request.form['message']))
-    rev = shakuntala(name=request.form['name'], review=request.form['message'], percent=sentiment_s)
+    register = g.user
+    rev = shakuntala(name=register.username, review=request.form['message'], percent=sentiment_s,user_id=register.id)
     db.session.add(rev)
     db.session.commit()
 
 
 def hp_rev(request):
     sentiment_s = pred(request.form['message'])
-    rev = harry(name=request.form['name'], review=request.form['message'], percent=sentiment_s)
+    register = g.user
+    rev = harry(name=register.username, review=request.form['message'], percent=sentiment_s,user_id=register.id)
     db.session.add(rev)
     db.session.commit()
 
 
 def avengers_rev(request):
     sentiment_s = pred(request.form['message'])
-    rev = avengers(name=request.form['name'], review=request.form['message'], percent=sentiment_s)
+    register = g.user
+    rev = avengers(name=register.username, review=request.form['message'], percent=sentiment_s,user_id=register.id)
     db.session.add(rev)
     db.session.commit()
 
 
 def laxmii_rev(request):
     sentiment_s = pred(request.form['message'])
-    rev = laxmii(name=request.form['name'], review=request.form['message'], percent=sentiment_s)
+    register = g.user
+    rev = laxmii(name=register.username, review=request.form['message'], percent=sentiment_s,user_id=register.id)
     db.session.add(rev)
     db.session.commit()
 
@@ -182,7 +191,8 @@ def laxmii_rev(request):
 
 def chhalaang_rev(request):
     sentiment_s = pred(request.form['message'])
-    rev = chhalaang(name=request.form['name'], review=request.form['message'], percent=sentiment_s)
+    register = g.user
+    rev = chhalaang(name=register.username, review=request.form['message'], percent=sentiment_s,user_id=register.id)
     db.session.add(rev)
     db.session.commit()
 
@@ -223,9 +233,16 @@ def login():
 
 class register(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    email = db.Column(db.String(30), unique=True, nullable=False)
+    username = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(40), unique=True, nullable=False)
     password = db.Column(db.String(20), nullable=False)
+    review_sd = db.relationship('shakuntala',backref='register',uselist=False)
+    review_hp = db.relationship('harry',backref='register',uselist=False)
+    review_av = db.relationship('avengers',backref='register',uselist=False)
+    review_ch = db.relationship('chhalaang',backref='register',uselist=False)
+    review_lx = db.relationship('laxmii',backref='register',uselist=False)
+    
+
 
 message_list = {}
 
@@ -239,11 +256,8 @@ def signup():
         if usrname == test_str or usrname.strip() == test_str:
             message_list["no_usr"] = "Please enter a username"
             count += 1
-        if register.query.filter_by(username=usrname).first():
-            message_list["usr_exits"] = "This username already exists"
-            count += 1
-        if len(usrname) > 20:
-            message_list["long_name"] = "Max 20 characters"
+        if len(usrname) > 30:
+            message_list["long_name"] = "Max 30 characters"
             count += 1
 
         email = request.form['email']
@@ -253,8 +267,8 @@ def signup():
         if register.query.filter_by(email=email).first():
             message_list["email_exits"] = "This email is  already registered"
             count += 1
-        if len(email) > 30:
-            message_list["long_email"] = "Max 30 characters"
+        if len(email) > 40:
+            message_list["long_email"] = "Max 40 characters"
             count += 1
         password = request.form['password']
         if ('' and password.strip()):
@@ -440,7 +454,7 @@ def dashboard():
     count_lx = laxmii.query.count()
 
     if request.method == "POST":
-        if request.form['name'] == '' or request.form['message'] == '':
+        if 'user_id' not in session and request.form['message'] == '':
             return redirect(url_for('dashboard'))
         sdf = shakuntala.query.all()
         count = 0

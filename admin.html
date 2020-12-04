@@ -74,20 +74,22 @@ caption{
     <table>
         <caption>Shakuntala Devi</caption>
         <th>id</th>
+        <th>user_id</th>
         <th>name</th>
         <th>review</th>
         <th>percent</th>
         <th>date_entered</th>
         {% for rev in sd_revs %}
         <tr>
-            <td>{{rev.id}}</td>
+            <td>{{rev.sd_id}}</td>
+            <td>{{rev.user_id}}</td>
             <td>{{rev.name}}</td>
             <td>{{rev.review}}</td>
             <td>{{"{0:.2%}".format(rev.percent)}}</td>
             <td>{{rev.date_entered}}</td>
             <td>
                 <form method="POST" action="./delete">
-                    <input type="hidden" value="{{rev.id}}" name="sd_rev_id">
+                    <input type="hidden" value="{{rev.sd_id}}" name="sd_rev_id">
                     <input type="submit" value="Delete">
                   </form>
             </td>
@@ -99,20 +101,22 @@ caption{
     <table>
         <caption>Chhalaang</caption>
         <th>id</th>
+        <th>user_id</th>
         <th>name</th>
         <th>review</th>
         <th>percent</th>
         <th>date_entered</th>
         {% for rev in ch_revs %}
         <tr>
-            <td>{{rev.id}}</td>
+            <td>{{rev.ch_id}}</td>
+            <td>{{rev.user_id}}</td>
             <td>{{rev.name}}</td>
             <td>{{rev.review}}</td>
             <td>{{"{0:.2%}".format(rev.percent)}}</td>
             <td>{{rev.date_entered}}</td>
             <td>
                 <form method="POST" action="./delete">
-                    <input type="hidden" value="{{rev.id}}" name="ch_rev_id">
+                    <input type="hidden" value="{{rev.ch_id}}" name="ch_rev_id">
                     <input type="submit" value="Delete">
                   </form>
             </td>
@@ -124,20 +128,22 @@ caption{
     <table>
         <caption>Avengers:Endgame</caption>
         <th>id</th>
+        <th>user_id</th>
         <th>name</th>
         <th>review</th>
         <th>percent</th>
         <th>date_entered</th>
         {% for rev in av_revs %}
         <tr>
-            <td>{{rev.id}}</td>
+            <td>{{rev.av_id}}</td>
+            <td>{{rev.user_id}}</td>
             <td>{{rev.name}}</td>
             <td>{{rev.review}}</td>
             <td>{{"{0:.2%}".format(rev.percent)}}</td>
             <td>{{rev.date_entered}}</td>
             <td>
                 <form method="POST" action="./delete">
-                    <input type="hidden" value="{{rev.id}}" name="av_rev_id">
+                    <input type="hidden" value="{{rev.av_id}}" name="av_rev_id">
                     <input type="submit" value="Delete">
                   </form>
             </td>
@@ -149,20 +155,22 @@ caption{
     <table>
         <caption>Harry Potter and the Deathly Halllows Part 1</caption>
         <th>id</th>
+        <th>user_id</th>
         <th>name</th>
         <th>review</th>
         <th>percent</th>
         <th>date_entered</th>
         {% for rev in hp_revs %}
         <tr>
-            <td>{{rev.id}}</td>
+            <td>{{rev.hp_id}}</td>
+            <td>{{rev.user_id}}</td>
             <td>{{rev.name}}</td>
             <td>{{rev.review}}</td>
             <td>{{"{0:.2%}".format(rev.percent)}}</td>
             <td>{{rev.date_entered}}</td>
             <td>
                 <form method="POST" action="./delete">
-                    <input type="hidden" value="{{rev.id}}" name="hp_rev_id">
+                    <input type="hidden" value="{{rev.hp_id}}" name="hp_rev_id">
                     <input type="submit" value="Delete">
                   </form>
             </td>
@@ -174,20 +182,22 @@ caption{
     <table>
         <caption>Laxmii</caption>
         <th>id</th>
+        <th>user_id</th>
         <th>name</th>
         <th>review</th>
         <th>percent</th>
         <th>date_entered</th>
         {% for rev in lx_revs %}
         <tr>
-            <td>{{rev.id}}</td>
+            <td>{{rev.lx_id}}</td>
+            <td>{{rev.user_id}}</td>
             <td>{{rev.name}}</td>
             <td>{{rev.review}}</td>
             <td>{{"{0:.2%}".format(rev.percent)}}</td>
             <td>{{rev.date_entered}}</td>
             <td>
                 <form method="POST" action="./delete">
-                    <input type="hidden" value="{{rev.id}}" name="lx_rev_id">
+                    <input type="hidden" value="{{rev.lx_id}}" name="lx_rev_id">
                     <input type="submit" value="Delete">
                   </form>
             </td>

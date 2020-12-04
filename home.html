@@ -574,27 +574,24 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                                         
                                         {% else %}
                                         <form id="sdf" method=POST >
-                                            <div class="form-group">
-                                            <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
-                                        </div>
-                                        <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
-                                        <!-- </div> -->
-                                            <button type="submit"  name="sd" class="myButton" style="margin-bottom:15px;" >Submit</button>
-                                            <br>
-                                            
-                                        <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px;">
-                                            {% for re in revs1 %}
-                                                <div style="background-image: linear-gradient(to right,rgb(25, 40, 70),rgb(55, 75, 112),rgb(87, 102, 133), rgb(99, 115, 146),rgb(158, 175, 209));background-color: rgb(55, 75, 112); padding: 10px; box-shadow: -1px 15px 14px -7px rgb(63, 80, 114); border-radius:10px;">
-                                                    <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
-                                                    <p style="size: 3px; color: yellow;">{{re.date_entered}}</p>
-                                                    <div style="text-indent: 15px;">
-                                                        <p style="font-size: 20px;" style="color: white;"><b>{{re.review }}</b></p>
-                                                        <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                            <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
+                                            <!-- </div> -->
+                                                <button type="submit"  name="sd" class="myButton" style="margin-bottom:15px;" >Submit</button>
+                                                <br>
+                                                
+                                            <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px;">
+                                                {% for re in revs1 %}
+                                                    <div style="background-image: linear-gradient(to right,rgb(25, 40, 70),rgb(55, 75, 112),rgb(87, 102, 133), rgb(99, 115, 146),rgb(158, 175, 209));background-color: rgb(55, 75, 112); padding: 10px; box-shadow: -1px 15px 14px -7px rgb(63, 80, 114); border-radius:10px;">
+                                                        <p style="color: white; font-size: 21px;"><b>{{re.name}}</b></p>
+                                                        <p style="size: 3px; color: yellow;">{{re.date_entered}}</p>
+                                                        <div style="text-indent: 15px;">
+                                                            <p style="font-size: 20px;" style="color: white;"><b>{{re.review }}</b></p>
+                                                            <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <hr>
-                                            {% endfor %}
-                                        </div>
+                                                    <hr>
+                                                {% endfor %}
+                                            </div>
                                         </form>
                                         {% endif %}
                                     </div>
@@ -699,9 +696,6 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
 
                                         {% else %}
                                         <form id="ch" method=POST>
-                                            <div class="form-group" style="width: 85%;">
-                                                <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
-                                            </div>
                                             <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
                                             <!-- </div> -->
                                                 <button type="submit"  name="ch" class="myButton" style="margin-bottom:15px;" >Submit</button>
@@ -829,9 +823,6 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                                         </div>
                                         {% else %}
                                         <form id="av" method=POST>
-                                            <div class="form-group">
-                                                <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
-                                            </div>
                                             <!-- <div style="width: 85%; color:black; overflow-y: scroll; height:150px;
                                             "> -->
                                                 <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
@@ -961,9 +952,6 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                                         </div>
                                         {% else %}
                                         <form id="hp" method=POST>
-                                            <div class="form-group" style="width: 85%;">
-                                                <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
-                                            </div>
                                             <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
                                             <!-- </div> -->
                                                 <button type="submit"  name="hp" class="myButton" style="margin-bottom:15px;" >Submit</button>
@@ -1091,9 +1079,6 @@ box-shadow:         -5px 5px 9px 0px rgba(37, 135, 50, 0.75);}
                                         </div>
                                         {% else %}
                                         <form id="laxmi" method=POST>
-                                            <div class="form-group" style="width: 85%;">
-                                            <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
-                                        </div>
                                         <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
                                             <!-- </div> -->
                                                 <button type="submit"  name="laxmii" class="myButton" style="margin-bottom:15px;" >Submit</button>
