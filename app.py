@@ -116,6 +116,18 @@ def delete():
         db.session.commit()
         return redirect(url_for('admin'))
 
+# @app.route("/output", methods=["POST"])
+# def output():
+#     select = request.form.get('usr_select')
+#     result = {}
+#     result['user'] = register.query.filter_by(id=select).first()
+#     result['Shakuntala Devi'] = shakuntala.query.filter_by(user_id = select).all()
+#     result['Harry Potter'] = harry.query.filter_by(user_id = select).all()
+#     result['Chhalaang'] = chhalaang.query.filter_by(user_id = select).all()
+#     result['Avengers Endgame'] = avengers.query.filter_by(user_id = select).all()
+#     result['Laxmii'] = laxmii.query.filter_by(user_id = select).all()
+#     return 
+
 class shakuntala(db.Model):
     sd_id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(20))
@@ -290,15 +302,26 @@ def signup():
     return render_template("signup.html", message_list={})
 
 
-@app.route('/admin', methods=['GET'])
-def admin() :
+@app.route('/admin', methods=['GET','POST'])
+def admin(result={}) :
     all_users = register.query.all()
     sd_revs = shakuntala.query.all()
     ch_revs = chhalaang.query.all()
     av_revs = avengers.query.all()
     hp_revs = harry.query.all()
     lx_revs = laxmii.query.all()
-    return render_template('admin.html', all_users=all_users,sd_revs=sd_revs,ch_revs=ch_revs,av_revs=av_revs,hp_revs=hp_revs,lx_revs=lx_revs)
+    if request.method == "POST":
+        if 'ops' in request.form :
+            select = request.form.get('usr_select')
+            result = {}
+            result['user'] = register.query.filter_by(id=select).first()
+            result['Shakuntala Devi'] = shakuntala.query.filter_by(user_id = select).all()
+            result['Harry Potter'] = harry.query.filter_by(user_id = select).all()
+            result['Chhalaang'] = chhalaang.query.filter_by(user_id = select).all()
+            result['Avengers Endgame'] = avengers.query.filter_by(user_id = select).all()
+            result['Laxmii'] = laxmii.query.filter_by(user_id = select).all()
+            return render_template('admin.html', all_users=all_users,sd_revs=sd_revs,ch_revs=ch_revs,av_revs=av_revs,hp_revs=hp_revs,lx_revs=lx_revs,result=result)
+    return render_template('admin.html', all_users=all_users,sd_revs=sd_revs,ch_revs=ch_revs,av_revs=av_revs,hp_revs=hp_revs,lx_revs=lx_revs,result={})
 
 def truncate(number) -> float:
     stepper = 10

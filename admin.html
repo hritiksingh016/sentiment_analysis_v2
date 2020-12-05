@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <style>
         table, th, td {
   border: 1px solid black;
@@ -71,6 +72,92 @@ caption{
     </table>
     <br>
     <br>
+    <form method=POST>
+        <span >Please select</span>
+            <select name="usr_select">
+            {% for user in all_users %}
+            <option value="{{ user.id }}">{{ user.id }}</option>
+            {% endfor %}                                              
+            </select>
+          <button type="submit" name="ops">Go</button>
+    </form>
+    <br>
+    <hr>
+    {% if result != {}  %}
+    <table>
+        <th>user_id</th>
+        <th>name</th>
+        <th>email</th>
+        <tr>
+            <td>{{ result['user'].id }}</td>
+            <td>{{ result['user'].username }}</td>
+            <td>{{ result['user'].email }}</td>
+        </tr>
+    </table>
+    <table>
+        <th>Movie</th>
+        <th>Reviews</th>
+        <th>rating</th>
+        <th>date_entered</th>
+        {% for key,value in result.items() %}
+        {% if key != 'user' %}
+        {% if value %}
+            <tr>
+                <td>{{key}}</td>
+                {% for val in value %}
+                <td>{{ val.review }}</td>
+                <td>{{ "{0:.2%}".format(val.percent) }}</td>
+                <td>{{val.date_entered}}</td>
+                {% if key == 'Shakuntala Devi' %}
+                <td>
+                    <form method="POST" action="./delete">
+                        <input type="hidden" value="{{val.sd_id}}" name="sd_rev_id">
+                        <input type="submit" value="Delete">
+                      </form>
+                </td>
+                {% endif %}
+                {% if key == 'Harry Potter' %}
+                <td>
+                    <form method="POST" action="./delete">
+                        <input type="hidden" value="{{val.hp_id}}" name="hp_rev_id">
+                        <input type="submit" value="Delete">
+                      </form>
+                </td>
+                {% endif %}
+                {% if key == 'Chhalaang' %}
+                <td>
+                    <form method="POST" action="./delete">
+                        <input type="hidden" value="{{val.ch_id}}" name="ch_rev_id">
+                        <input type="submit" value="Delete">
+                      </form>
+                </td>
+                {% endif %}
+                {% if key == 'Avengers Endgame' %}
+                <td>
+                    <form method="POST" action="./delete">
+                        <input type="hidden" value="{{val.av_id}}" name="av_rev_id">
+                        <input type="submit" value="Delete">
+                      </form>
+                </td>
+                {% endif %}
+                {% if key == 'Laxmii' %}
+                <td>
+                    <form method="POST" action="./delete">
+                        <input type="hidden" value="{{val.lx_id}}" name="lx_rev_id">
+                        <input type="submit" value="Delete">
+                      </form>
+                </td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+    </table>
+    {% endif %}
+    <br>
+    <br>
+    <hr>
     <table>
         <caption>Shakuntala Devi</caption>
         <th>id</th>
@@ -204,5 +291,7 @@ caption{
         </tr>
         {% endfor %}
     </table>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
